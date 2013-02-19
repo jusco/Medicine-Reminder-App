@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Medicine Reminder</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="feedbacktitle">Enter Your Information</string>
+    <string name="firstname">First Name</string>
+    <string name="lastname">Last Name</string>
+    <string name="pick_date">Diagnosis Date</string>
+    <string name="viralload">Viral Load</string>
+    <string name="phone">Phone Number</string>
+    <string name="providerphone">Provider Number</string>
+
+</resources>
