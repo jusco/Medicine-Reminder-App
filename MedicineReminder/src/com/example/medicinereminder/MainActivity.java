@@ -11,12 +11,18 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.DatePicker;
 
+import com.example.medicinereminder.sql.*;
+
 public class MainActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		DatabaseAccess dbAccess = new DatabaseAccess(this);
+		dbAccess.open();
+		CursorHolder input = dbAccess.addLog("Started app", "7:50PM");
+		System.out.println(input.getInt(0)+ " " + input.getString(1) + " " + input.getString(2));
 	}
 
 	@Override
