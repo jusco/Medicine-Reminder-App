@@ -43,6 +43,19 @@ public class DatabaseAccess {
 		dbHelper.close();
 	}
 	
+	public void printToConsole(){
+		List<CursorHolder> allData = getAllData();
+		for (CursorHolder ch : allData){
+			System.out.println(printCursor(ch));
+		}
+		
+	}
+	
+	public String printCursor(CursorHolder ch){
+		return "userID: " + Integer.toString(ch.getInt(0)) + " userName: " + ch.getString(1); 
+		
+	}
+	
 	public CursorHolder addUserData(String name, int age,
 			int viral_load, int cd4, String doctor,
 			String doctor_number){

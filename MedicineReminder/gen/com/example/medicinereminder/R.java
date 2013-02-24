@@ -22,7 +22,8 @@ public final class R {
         public static final int EditViralLoad=0x7f070005;
         public static final int FormTitle=0x7f070001;
         public static final int ScrollView01=0x7f070000;
-        public static final int menu_settings=0x7f070008;
+        public static final int SubmitButton=0x7f070008;
+        public static final int menu_settings=0x7f070009;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
