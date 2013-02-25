@@ -11,6 +11,8 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.ViewFlipper;
 
 public class MainActivity extends Activity {
 
@@ -50,6 +52,12 @@ public class MainActivity extends Activity {
 		public void onDateSet(DatePicker view, int year, int month, int day) {
 			
 		}
+	}
+	
+	public void toNextPage(View v){
+		ViewFlipper flip = (ViewFlipper) findViewById(R.id.view_flipper);
+		int second = R.id.FirstPage;
+		flip.setDisplayedChild(second);
 	}
 
 }
