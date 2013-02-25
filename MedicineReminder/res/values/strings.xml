@@ -11,5 +11,6 @@
     <string name="viralload">Viral Load</string>
     <string name="phone">Phone Number</string>
     <string name="providerphone">Provider Number</string>
+    <string name="next">Next</string>
 
 </resources>

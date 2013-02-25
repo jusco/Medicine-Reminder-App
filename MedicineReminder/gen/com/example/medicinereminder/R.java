@@ -21,8 +21,9 @@ public final class R {
         public static final int EditProviderPhone=0x7f070007;
         public static final int EditViralLoad=0x7f070005;
         public static final int FormTitle=0x7f070001;
+        public static final int NextButton=0x7f070008;
         public static final int ScrollView01=0x7f070000;
-        public static final int menu_settings=0x7f070008;
+        public static final int menu_settings=0x7f070009;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -37,6 +38,7 @@ public final class R {
         public static final int hello_world=0x7f040001;
         public static final int lastname=0x7f040005;
         public static final int menu_settings=0x7f040002;
+        public static final int next=0x7f04000a;
         public static final int phone=0x7f040008;
         public static final int pick_date=0x7f040006;
         public static final int providerphone=0x7f040009;

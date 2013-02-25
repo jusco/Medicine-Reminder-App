@@ -10,6 +10,7 @@ import android.app.DialogFragment;
 import android.view.Menu;
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.EditText;
 
 public class MainActivity extends Activity {
 
@@ -47,7 +48,7 @@ public class MainActivity extends Activity {
 		}
 
 		public void onDateSet(DatePicker view, int year, int month, int day) {
-			// Do something with the date chosen by the user
+			
 		}
 	}
 
