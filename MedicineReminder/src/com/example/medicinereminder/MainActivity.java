@@ -3,6 +3,7 @@ package com.example.medicinereminder;
 import java.util.Calendar;
 
 import android.os.Bundle;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -12,17 +13,28 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.NumberPicker;
 import android.widget.Toast;
 
 import android.widget.LinearLayout;
 import android.widget.ViewFlipper;
 
+@SuppressLint("NewApi")
 public class MainActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		NumberPicker np = (NumberPicker) findViewById(R.id.np);
+		np.setMaxValue(12);
+		np.setMinValue(0);
+		String[] vals = new String[13];
+		for (int i = 0; i < vals.length; i++) {
+			vals[i] = Integer.toString(i * 5) + " min";
+		}
+		np.setWrapSelectorWheel(false);
+		np.setDisplayedValues(vals);
 	}
 
 	@Override
@@ -79,5 +91,5 @@ public class MainActivity extends Activity {
 		timebox.setInputType(InputType.TYPE_DATETIME_VARIATION_TIME);
 		times.addView(timebox);
 	}
-
+	
 }

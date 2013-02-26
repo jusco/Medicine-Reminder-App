@@ -18,5 +18,7 @@
     <string name="medicinetimetitle">What time do you take your meds?</string>
     <string name="medicinetime">Time</string>
     <string name="prev">Previous</string>
+    <string name="remindertime2">before I need to take the medicine.</string>
+    <string name="remindertime">Remind me...</string>
 
 </resources>

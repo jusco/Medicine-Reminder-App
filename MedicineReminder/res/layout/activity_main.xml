@@ -95,14 +95,116 @@
                 android:text="@string/next" />
         </LinearLayout>
 
+        <ScrollView
+            android:id="@+id/ScrollView02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scrollbars="vertical" >
+
+            <LinearLayout
+                android:id="@+id/SecondPage"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/FormTitleMedicine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:text="@string/medicinetitle"
+                    android:textSize="8pt" >
+                </TextView>
+
+                <LinearLayout
+                    android:id="@+id/medicineBoxes"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:orientation="vertical" >
+
+                    <EditText
+                        android:id="@+id/EditMedicine"
+                        android:layout_width="fill_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:hint="@string/medicinename"
+                        android:inputType="text" >
+                    </EditText>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/FormTitleTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:text="@string/medicinetimetitle"
+                    android:textSize="8pt" >
+                </TextView>
+
+                <LinearLayout
+                    android:id="@+id/timeBoxes"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:orientation="vertical" >
+
+                    <EditText
+                        android:id="@+id/EditTime"
+                        android:layout_width="fill_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:hint="@string/medicinetime"
+                        android:inputType="time" >
+                    </EditText>
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/AddButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:onClick="addMedicineBox"
+                    android:text="@string/addmedicine" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <Button
+                        android:id="@+id/PrevButton2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:onClick="toPrevPage"
+                        android:text="@string/prev" />
+
+                    <Button
+                        android:id="@+id/NextButton2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:onClick="toNextPage"
+                        android:text="@string/next" />
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+
         <LinearLayout
-            android:id="@+id/SecondPage"
+            android:id="@+id/ThirdPage"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
             <TextView
-                android:id="@+id/FormTitleMedicine"
+                android:id="@+id/ReminderTime"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_marginBottom="10dp"
@@ -110,87 +212,51 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
-                android:text="@string/medicinetitle"
+                android:text="@string/remindertime"
                 android:textSize="8pt" >
             </TextView>
 
-            <LinearLayout
-                android:id="@+id/medicineBoxes"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:orientation="vertical" >
-
-                <EditText
-                    android:id="@+id/EditMedicine"
-                    android:layout_width="fill_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:hint="@string/medicinename"
-                    android:inputType="text" >
-                </EditText>
-            </LinearLayout>
-
-
-            <TextView
-                android:id="@+id/FormTitleTime"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:text="@string/medicinetimetitle"
-                android:textSize="8pt" >
-            </TextView>
-
-            <LinearLayout
-                android:id="@+id/timeBoxes"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:orientation="vertical" >
-
-                <EditText
-                    android:id="@+id/EditTime"
-                    android:layout_width="fill_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:hint="@string/medicinetime"
-                    android:inputType="time" >
-                </EditText>
-            </LinearLayout>
-
-            <Button
-                android:id="@+id/AddButton"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:onClick="addMedicineBox"
-                android:text="@string/addmedicine" />
-
-            <LinearLayout
+            <NumberPicker
+                android:id="@+id/np"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal" >
+                android:width="100dip" />
 
-                <Button
-                    android:id="@+id/PrevButton2"
+            <TextView
+                android:id="@+id/ReminderTimeCont"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:text="@string/remindertime2"
+                android:textSize="8pt" >
+            </TextView>
+
+            <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:onClick="toPrevPage"
-                    android:text="@string/prev" />
-                
-                 <Button
-                    android:id="@+id/NextButton2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:onClick="toNextPage"
-                    android:text="@string/next" />
-            </LinearLayout>
+                    android:orientation="horizontal" >
+
+                    <Button
+                        android:id="@+id/PrevButton3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:onClick="toPrevPage"
+                        android:text="@string/prev" />
+
+                    <Button
+                        android:id="@+id/NextButton3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:onClick="toNextPage"
+                        android:text="@string/next" />
+                </LinearLayout>
         </LinearLayout>
     </ViewFlipper>
-
 
 </ScrollView>
