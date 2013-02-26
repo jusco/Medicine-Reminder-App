@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.text.InputType;
 import android.view.Menu;
 import android.view.View;
 import android.widget.DatePicker;
@@ -56,8 +57,25 @@ public class MainActivity extends Activity {
 	
 	public void toNextPage(View v){
 		ViewFlipper flip = (ViewFlipper) findViewById(R.id.view_flipper);
-		int second = R.id.FirstPage;
-		flip.setDisplayedChild(second);
+		flip.showNext();
+	}
+	
+	public void toPrevPage(View v){
+		ViewFlipper flip = (ViewFlipper) findViewById(R.id.view_flipper);
+		flip.showPrevious();
+	}
+	
+	public void addMedicineBox(View v){
+		LinearLayout medicines = (LinearLayout) findViewById(R.id.medicineBoxes);
+		EditText medicinebox = new EditText(this);
+		medicinebox.setText("Medicine Name");
+		medicines.addView(medicinebox);
+		
+		LinearLayout times = (LinearLayout) findViewById(R.id.timeBoxes);
+		EditText timebox = new EditText(this);
+		timebox.setText("Time");
+		timebox.setInputType(InputType.TYPE_DATETIME_VARIATION_TIME);
+		times.addView(timebox);
 	}
 
 }
