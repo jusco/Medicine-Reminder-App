@@ -1,7 +1,7 @@
 package com.example.medicinereminder.test;
 
 import android.content.Context;
-import android.database.Cursor;
+
 import android.test.ActivityInstrumentationTestCase2;
 import com.example.medicinereminder.*;
 import com.example.medicinereminder.sql.CursorHolder;
@@ -9,6 +9,7 @@ import com.example.medicinereminder.sql.DatabaseAccess;
 
 public class DatabaseEntry extends ActivityInstrumentationTestCase2<MainActivity> {
 
+	@SuppressWarnings("deprecation")
 	public DatabaseEntry() {
 		super("com.example.medicinereminder", MainActivity.class);
 	}

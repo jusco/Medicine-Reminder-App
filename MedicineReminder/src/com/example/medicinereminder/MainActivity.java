@@ -98,6 +98,8 @@ public class MainActivity extends Activity {
 		    medicineTimes.add(((EditText) times.getChildAt(i)).getText().toString());
 		
 		int remindertime = ((NumberPicker) findViewById(R.id.np)).getValue();
+		AlarmSet alarmset = new AlarmSet(this);
+		alarmset.setAlarm(medicineTimes.get(0), remindertime);
 		
 		Intent intent = new Intent(this, HomePageActivity.class);
 		startActivity(intent);
@@ -105,7 +107,7 @@ public class MainActivity extends Activity {
 		
 		//Set Static User Attributes based off submission form
 		MyGuy.getUser().setFirstName(firstName);
-		MyGuy.getUser().setFirstName(lastName);
+		MyGuy.getUser().setLastName(lastName);
 		MyGuy.getUser().setPhoneNumer(phone);
 	}
 	

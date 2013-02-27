@@ -22,7 +22,10 @@
     <string name="remindertime">Remind me...</string>
     <string name="title_activity_home_page">HomePageActivity</string>
     <string name="submit">Submit</string>
-
-
-
+    <string name="alarm_service_started">MedRem Alarm Activated.</string>
+	<string name="alarm_service_label">MedRem Alarm</string>
+	<string name= "activity_alarm_service">Alarm Page</string>
+	<string name="scheduled">Alarm Scheduled</string>
+	<string name="unscheduled">Alarm Unscheduled</string>
+	
 </resources>
