@@ -1,5 +1,6 @@
 package com.example.medicinereminder;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import android.os.Bundle;
@@ -20,8 +21,11 @@ import android.widget.Toast;
 import android.widget.LinearLayout;
 import android.widget.ViewFlipper;
 
+
+
 @SuppressLint("NewApi")
 public class MainActivity extends Activity {
+	protected static String date;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +70,7 @@ public class MainActivity extends Activity {
 		}
 
 		public void onDateSet(DatePicker view, int year, int month, int day) {
-			
+			date = Integer.toString(year)+Integer.toString(month)+Integer.toString(day);
 		}
 	}
 	
@@ -76,12 +80,33 @@ public class MainActivity extends Activity {
 	}
 	
 	public void sumbitForm(View v){
+		String firstName = ((EditText) findViewById(R.id.EditFirstName)).getText().toString();
+		String lastName = ((EditText) findViewById(R.id.EditLastName)).getText().toString();
+		String infectionDate = date;
+		String viralLoad = ((EditText) findViewById(R.id.EditViralLoad)).getText().toString();
+		String phone = ((EditText) findViewById(R.id.EditPhone)).getText().toString();
+		String provider = ((EditText) findViewById(R.id.EditProviderPhone)).getText().toString();
+		
+		ArrayList<String> medicineNames = new ArrayList<String>();
+		LinearLayout medicines = (LinearLayout)findViewById(R.id.medicineBoxes);
+		for( int i = 0; i<medicines.getChildCount(); i++ )
+		    medicineNames.add(((EditText) medicines.getChildAt(i)).getText().toString());
+		
+		ArrayList<String> medicineTimes = new ArrayList<String>();
+		LinearLayout times = (LinearLayout)findViewById(R.id.timeBoxes);
+		for( int i = 0; i<times.getChildCount(); i++ )
+		    medicineTimes.add(((EditText) times.getChildAt(i)).getText().toString());
+		
+		int remindertime = ((NumberPicker) findViewById(R.id.np)).getValue();
+		
 		Intent intent = new Intent(this, HomePageActivity.class);
 		startActivity(intent);
 		
+		
 		//Set Static User Attributes based off submission form
-		MyUser.getUser().setFirstName("Jon Font");
-		MyUser.getUser().setPhoneNumer("6109068237");
+		MyGuy.getUser().setFirstName(firstName);
+		MyGuy.getUser().setFirstName(lastName);
+		MyGuy.getUser().setPhoneNumer(phone);
 	}
 	
 	

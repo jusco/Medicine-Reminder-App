@@ -15,8 +15,8 @@ public class HomePageActivity extends Activity {
 		TextView fullNameText = (TextView)findViewById(R.id.fullNameView);
 		TextView phoneNumberText = (TextView)findViewById(R.id.phoneNumberView);
 
-		fullNameText.setText(MyUser.getUser().firstName);
-		phoneNumberText.setText(MyUser.getUser().phoneNumer);
+		fullNameText.setText(MyGuy.getUser().firstName);
+		phoneNumberText.setText(MyGuy.getUser().phoneNumer);
 
 	}
 
