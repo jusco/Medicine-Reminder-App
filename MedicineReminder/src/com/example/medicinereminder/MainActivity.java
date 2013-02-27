@@ -99,6 +99,7 @@ public class MainActivity extends Activity {
 		
 		Intent intent = new Intent(this, HomePageActivity.class);
 		startActivity(intent);
+		MyUser.getUser().setFirstName("JFONT");
 	}
 	
 	
