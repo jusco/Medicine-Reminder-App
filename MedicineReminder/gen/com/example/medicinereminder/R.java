@@ -45,10 +45,12 @@ public final class R {
         public static final int view_flipper=0x7f070001;
     }
     public static final class layout {
-        public static final int activity_main=0x7f030000;
+        public static final int activity_home_page=0x7f030000;
+        public static final int activity_main=0x7f030001;
     }
     public static final class menu {
-        public static final int activity_main=0x7f060000;
+        public static final int activity_home_page=0x7f060000;
+        public static final int activity_main=0x7f060001;
     }
     public static final class string {
         public static final int addmedicine=0x7f04000d;
@@ -69,6 +71,8 @@ public final class R {
         public static final int providerphone=0x7f040009;
         public static final int remindertime=0x7f040012;
         public static final int remindertime2=0x7f040011;
+        public static final int submit=0x7f040014;
+        public static final int title_activity_home_page=0x7f040013;
         public static final int viralload=0x7f040007;
     }
     public static final class style {

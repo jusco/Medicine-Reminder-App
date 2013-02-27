@@ -20,5 +20,9 @@
     <string name="prev">Previous</string>
     <string name="remindertime2">before I need to take the medicine.</string>
     <string name="remindertime">Remind me...</string>
+    <string name="title_activity_home_page">HomePageActivity</string>
+    <string name="submit">Submit</string>
+
+
 
 </resources>

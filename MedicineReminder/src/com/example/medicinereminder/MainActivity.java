@@ -8,6 +8,7 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.content.Intent;
 import android.text.InputType;
 import android.view.Menu;
 import android.view.View;
@@ -73,6 +74,12 @@ public class MainActivity extends Activity {
 		ViewFlipper flip = (ViewFlipper) findViewById(R.id.view_flipper);
 		flip.showNext();
 	}
+	
+	public void sumbitForm(View v){
+		Intent intent = new Intent(this, HomePageActivity.class);
+		startActivity(intent);
+	}
+	
 	
 	public void toPrevPage(View v){
 		ViewFlipper flip = (ViewFlipper) findViewById(R.id.view_flipper);
