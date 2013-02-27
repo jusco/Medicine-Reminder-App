@@ -11,8 +11,13 @@ public class HomePageActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home_page);
-		TextView firstNameText = (TextView)findViewById(R.id.textView1);
-		firstNameText.setText(MyUser.getUser().firstName);
+		
+		TextView fullNameText = (TextView)findViewById(R.id.fullNameView);
+		TextView phoneNumberText = (TextView)findViewById(R.id.phoneNumberView);
+
+		fullNameText.setText(MyUser.getUser().firstName);
+		phoneNumberText.setText(MyUser.getUser().phoneNumer);
+
 	}
 
 	@Override

@@ -78,7 +78,10 @@ public class MainActivity extends Activity {
 	public void sumbitForm(View v){
 		Intent intent = new Intent(this, HomePageActivity.class);
 		startActivity(intent);
-		MyUser.getUser().setFirstName("JFONT");
+		
+		//Set Static User Attributes based off submission form
+		MyUser.getUser().setFirstName("Jon Font");
+		MyUser.getUser().setPhoneNumer("6109068237");
 	}
 	
 	
