@@ -101,6 +101,8 @@ public class MainActivity extends Activity {
 		AlarmSet alarmset = new AlarmSet(this);
 		alarmset.setAlarm(medicineTimes.get(0), remindertime);
 		
+		String custommessage = ((EditText) findViewById(R.id.EditReminderMessage)).getText().toString();
+		
 		Intent intent = new Intent(this, HomePageActivity.class);
 		startActivity(intent);
 		

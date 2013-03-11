@@ -236,26 +236,77 @@
             </TextView>
 
             <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/PrevButton3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal" >
+                    android:layout_weight="1"
+                    android:onClick="toPrevPage"
+                    android:text="@string/prev" />
 
-                    <Button
-                        android:id="@+id/PrevButton3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:onClick="toPrevPage"
-                        android:text="@string/prev" />
+                <Button
+                    android:id="@+id/NextButton3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="toNextPage"
+                    android:text="@string/next" />
+            </LinearLayout>
+        </LinearLayout>
 
-                    <Button
-                        android:id="@+id/NextButton3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:onClick="sumbitForm"
-                        android:text="@string/submit" />
-                </LinearLayout>
+        <LinearLayout
+            android:id="@+id/FourthPage"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/ReminderMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:text="@string/remindermessage"
+                android:textSize="8pt" >
+            </TextView>
+
+            <EditText
+                android:id="@+id/EditReminderMessage"
+                android:gravity="top|left"
+                android:layout_width="fill_parent"
+                android:layout_height="200dp"
+                android:hint="@string/myremindermessage"
+                android:inputType="textMultiLine" >
+            </EditText>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/PrevButton4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="toPrevPage"
+                    android:text="@string/prev" />
+
+                <Button
+                    android:id="@+id/NextButton4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="sumbitForm"
+                    android:text="@string/submit" />
+            </LinearLayout>
         </LinearLayout>
     </ViewFlipper>
 

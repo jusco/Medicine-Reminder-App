@@ -27,5 +27,7 @@
 	<string name= "activity_alarm_service">Alarm Page</string>
 	<string name="scheduled">Alarm Scheduled</string>
 	<string name="unscheduled">Alarm Unscheduled</string>
+	<string name="remindermessage">What message should appear when you are reminded?</string>
+	<string name="myremindermessage">My custom text...</string>
 	
 </resources>
