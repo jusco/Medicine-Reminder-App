@@ -5,10 +5,10 @@
     android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/alarmMessage"
         android:layout_width="304dp"
         android:layout_height="wrap_content"
-        android:text="Medicine Time!"
+        android:text=""
         android:textSize="40sp" />
 
     <ImageView

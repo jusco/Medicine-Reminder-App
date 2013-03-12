@@ -8,6 +8,7 @@ public class MyGuy  {
     String lastName;
     String fullName;
     String phoneNumer;
+    String alarmMessage;
 
     // Private constructor prevents instantiation from other classes
     private MyGuy() {
@@ -35,4 +36,9 @@ public class MyGuy  {
     public void setPhoneNumer(String num){
     	phoneNumer = num;
     }
+    
+    public void setAlarmMessage(String message){
+    	alarmMessage = message;
+    }
+    
 }

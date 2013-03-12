@@ -111,6 +111,7 @@ public class MainActivity extends Activity {
 		MyGuy.getUser().setFirstName(firstName);
 		MyGuy.getUser().setLastName(lastName);
 		MyGuy.getUser().setPhoneNumer(phone);
+		MyGuy.getUser().setAlarmMessage(custommessage);
 	}
 	
 	
