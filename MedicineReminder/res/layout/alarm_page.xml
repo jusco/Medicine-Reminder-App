@@ -34,17 +34,12 @@
             android:onClick="onIgnoreButtonClick"
             android:text="Sleep" />
 
-        <EditText
+       	<Spinner
             android:id="@+id/editSleep"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="@string/medicinetime"
-            android:inputType="time" >
+            android:layout_height="wrap_content" />
 
-            <requestFocus />
-        </EditText>
+       
 
     </LinearLayout>
 
