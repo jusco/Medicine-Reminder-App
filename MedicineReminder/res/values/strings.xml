@@ -29,6 +29,9 @@
 	<string name="unscheduled">Alarm Unscheduled</string>
 	<string name="remindermessage">What message should appear when you are reminded?</string>
 	<string name="myremindermessage">My custom text...</string>
+	<string name="appointmenttitle">When are your next appointments?</string>
+	<string name="appointment">My appointment is...</string>
+	<string name="refilltitle">My next refill is...</string>
 	
 	<string-array name="sleep_array">
         <item>5</item>

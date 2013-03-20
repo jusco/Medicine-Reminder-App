@@ -279,9 +279,9 @@
 
             <EditText
                 android:id="@+id/EditReminderMessage"
-                android:gravity="top|left"
                 android:layout_width="fill_parent"
                 android:layout_height="200dp"
+                android:gravity="top|left"
                 android:hint="@string/myremindermessage"
                 android:inputType="textMultiLine" >
             </EditText>
@@ -304,7 +304,138 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:onClick="sumbitForm"
+                    android:onClick="toNextPage"
+                    android:text="@string/next" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/FifthPage"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/FormTitleAppointment"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:text="@string/appointmenttitle"
+                android:textSize="8pt" >
+            </TextView>
+
+            <LinearLayout
+                android:id="@+id/appointmentBoxes"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical" >
+
+                <DatePicker
+                    android:id="@+id/EditAppointment"
+                    android:calendarViewShown="False"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+                </DatePicker>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/AddAppointment"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:onClick="addAppointmentBox"
+                android:text="@string/addmedicine" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/PrevButton5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="toPrevPage"
+                    android:text="@string/prev" />
+
+                <Button
+                    android:id="@+id/NextButton5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="toNextPage"
+                    android:text="@string/next" />
+            </LinearLayout>
+        </LinearLayout>
+        
+        
+        <LinearLayout
+            android:id="@+id/SixthPage"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/FormTitleRefill"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:text="@string/refilltitle"
+                android:textSize="8pt" >
+            </TextView>
+
+            <LinearLayout
+                android:id="@+id/refillBoxes"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical" >
+
+                <DatePicker
+                    android:id="@+id/EditRefill"
+                    android:calendarViewShown="False"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+                </DatePicker>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/AddRefill"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:onClick="addRefillBox"
+                android:text="@string/addmedicine" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/PrevButton6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="toPrevPage"
+                    android:text="@string/prev" />
+
+                <Button
+                    android:id="@+id/NextButton6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="submitForm"
                     android:text="@string/submit" />
             </LinearLayout>
         </LinearLayout>
