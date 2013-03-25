@@ -336,10 +336,10 @@
 
                 <DatePicker
                     android:id="@+id/EditAppointment"
-                    android:calendarViewShown="False"
                     android:layout_width="fill_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:calendarViewShown="False" >
                 </DatePicker>
             </LinearLayout>
 
@@ -373,8 +373,7 @@
                     android:text="@string/next" />
             </LinearLayout>
         </LinearLayout>
-        
-        
+
         <LinearLayout
             android:id="@+id/SixthPage"
             android:layout_width="fill_parent"
@@ -402,10 +401,10 @@
 
                 <DatePicker
                     android:id="@+id/EditRefill"
-                    android:calendarViewShown="False"
                     android:layout_width="fill_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:calendarViewShown="False" >
                 </DatePicker>
             </LinearLayout>
 
@@ -432,6 +431,65 @@
 
                 <Button
                     android:id="@+id/NextButton6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="toNextPage"
+                    android:text="@string/next" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/SeventhPage"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/FormTitleAvatar"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:text="@string/avatartitle"
+                android:textSize="8pt" >
+            </TextView>
+
+            <LinearLayout
+                android:id="@+id/AvatarFirstRow"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_launcher"
+                    android:onClick="selectAvatar">
+                </ImageButton>
+               	
+                <!-- Add avatars here. -->
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/PrevButton7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="toPrevPage"
+                    android:text="@string/prev" />
+
+                <Button
+                    android:id="@+id/SubmitButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

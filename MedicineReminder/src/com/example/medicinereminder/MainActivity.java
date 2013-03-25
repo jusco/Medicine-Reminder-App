@@ -11,11 +11,13 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Intent;
+import android.graphics.Color;
 import android.text.InputType;
 import android.view.Menu;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.NumberPicker;
 import android.widget.Toast;
 
@@ -163,7 +165,12 @@ public class MainActivity extends Activity {
 		refbox.setCalendarViewShown(false);
 		refills.addView(refbox);
 	}
-
-
+	
+	public void selectAvatar(View v){
+		v.setBackgroundColor(Color.RED);
+		/*TODO Store avatar on click. Also, set other avatars background color to grey, so that
+		*only one is selected at a time.
+		*/
+	}
 
 }
