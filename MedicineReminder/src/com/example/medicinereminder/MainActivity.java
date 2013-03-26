@@ -9,10 +9,16 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.app.DialogFragment;
 import android.app.TimePickerDialog;
+
+
+
+
 import android.content.Intent;
 import android.graphics.Color;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.text.InputType;
 import android.text.format.DateFormat;
 import android.view.Menu;
@@ -32,7 +38,7 @@ import android.widget.ViewFlipper;
 
 
 @SuppressLint("NewApi")
-public class MainActivity extends Activity {
+public class MainActivity extends FragmentActivity {
 	protected static String date;
 	protected int counter;
 	protected TextView display;
@@ -63,6 +69,7 @@ public class MainActivity extends Activity {
 		    display.setText( "" + counter);
 		    }
 		});
+		time = new ArrayList<int[]>();
 
 	}
 
@@ -76,7 +83,8 @@ public class MainActivity extends Activity {
 
 	public void showDatePickerDialog(View v) {
 		DialogFragment newFragment = new DatePickerFragment();
-		newFragment.show(getFragmentManager(), "datePicker");
+		FragmentManager fg= getSupportFragmentManager(); 
+		newFragment.show(fg, "datePicker");
 	}
 
 	
@@ -104,7 +112,7 @@ public class MainActivity extends Activity {
 	
 	public void showTimePickerDialog(View v) {
 		DialogFragment newFragment = new TimePickerFragment();
-		newFragment.show(getFragmentManager(), "timePicker");
+		newFragment.show(getSupportFragmentManager(), "timePicker");
 		lastTimeBox = (EditText) v.findViewById(R.id.EditTime);
 	}
 	
