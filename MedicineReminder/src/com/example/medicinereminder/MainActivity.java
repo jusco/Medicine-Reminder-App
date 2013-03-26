@@ -10,15 +10,18 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.text.InputType;
+import android.text.format.DateFormat;
 import android.view.Menu;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.NumberPicker;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import android.widget.LinearLayout;
@@ -29,6 +32,8 @@ import android.widget.ViewFlipper;
 @SuppressLint("NewApi")
 public class MainActivity extends Activity {
 	protected static String date;
+	protected static ArrayList<int[]> time;
+	protected static EditText lastTimeBox;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +48,7 @@ public class MainActivity extends Activity {
 		}
 		np.setWrapSelectorWheel(false);
 		np.setDisplayedValues(vals);
+		time = new ArrayList<int[]>();
 	}
 
 	@Override
@@ -57,6 +63,8 @@ public class MainActivity extends Activity {
 		newFragment.show(getFragmentManager(), "datePicker");
 	}
 
+	
+	
 	public static class DatePickerFragment extends DialogFragment
 	implements DatePickerDialog.OnDateSetListener {
 
@@ -74,6 +82,36 @@ public class MainActivity extends Activity {
 
 		public void onDateSet(DatePicker view, int year, int month, int day) {
 			date = Integer.toString(year)+Integer.toString(month)+Integer.toString(day);
+		}
+	}
+	
+	
+	public void showTimePickerDialog(View v) {
+		DialogFragment newFragment = new TimePickerFragment();
+		newFragment.show(getFragmentManager(), "timePicker");
+		lastTimeBox = (EditText) v.findViewById(R.id.EditTime);
+	}
+	
+	public static class TimePickerFragment extends DialogFragment
+	implements TimePickerDialog.OnTimeSetListener {
+
+		@Override
+		public Dialog onCreateDialog(Bundle savedInstanceState) {
+			// Use the current date as the default date in the picker
+			final Calendar c = Calendar.getInstance();
+	        int hour = c.get(Calendar.HOUR_OF_DAY);
+	        int minute = c.get(Calendar.MINUTE);
+
+	        // Create a new instance of TimePickerDialog and return it
+	        return new TimePickerDialog(getActivity(), this, hour, minute,
+	                DateFormat.is24HourFormat(getActivity()));
+	    }
+
+
+		public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+			int [] t_time = {hourOfDay,minute};
+			time.add(t_time);
+			lastTimeBox.setText(Integer.toString(hourOfDay)+":"+Integer.toString(minute));
 		}
 	}
 
@@ -95,21 +133,23 @@ public class MainActivity extends Activity {
 		for( int i = 0; i<medicines.getChildCount(); i++ )
 			medicineNames.add(((EditText) medicines.getChildAt(i)).getText().toString());
 
-		ArrayList<String> medicineTimes = new ArrayList<String>();
-		LinearLayout times = (LinearLayout)findViewById(R.id.timeBoxes);
-		for( int i = 0; i<times.getChildCount(); i++ )
-			medicineTimes.add(((EditText) times.getChildAt(i)).getText().toString());
+// 		ArrayList<String> medicineTimes = new ArrayList<String>();
+// 		LinearLayout times = (LinearLayout)findViewById(R.id.timeBoxes);
+// 		for( int i = 0; i<times.getChildCount(); i++ )
+// 			medicineTimes.add(((EditText) times.getChildAt(i)).getText().toString());
 
+		
 		int remindertime = ((NumberPicker) findViewById(R.id.np)).getValue();
 		AlarmSet alarmset = new AlarmSet(this);
-		alarmset.setAlarm(medicineTimes.get(0), remindertime);
+		for(int i =0;i<1;i++) //For now just sets the first alarm
+			alarmset.setAlarm(time.get(i)[0],time.get(i)[1], remindertime);
 
 		String custommessage = ((EditText) findViewById(R.id.EditReminderMessage)).getText().toString();
 		
 		//TODO Need to removed deprecated constructor for Date. 
 		ArrayList<Date> appointments = new ArrayList<Date>();
 		LinearLayout apps = (LinearLayout)findViewById(R.id.appointmentBoxes);
-		for( int i = 0; i<times.getChildCount(); i++ ){
+		for( int i = 0; i<apps.getChildCount(); i++ ){
 			DatePicker dp = (DatePicker) apps.getChildAt(i);
 					appointments.add(new Date(dp.getYear(),dp.getMonth(),dp.getDayOfMonth()));
 		}
@@ -148,8 +188,17 @@ public class MainActivity extends Activity {
 		LinearLayout times = (LinearLayout) findViewById(R.id.timeBoxes);
 		EditText timebox = new EditText(this);
 		timebox.setText("Time");
+		timebox.setId(R.id.EditTime);
 		timebox.setInputType(InputType.TYPE_DATETIME_VARIATION_TIME);
+		timebox.setFocusableInTouchMode(false);
+		timebox.setHint(R.string.medicinetime);
+		timebox.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v){
+				showTimePickerDialog(v);
+			}	
+		});
 		times.addView(timebox);
+
 	}
 
 	public void addAppointmentBox(View v){
