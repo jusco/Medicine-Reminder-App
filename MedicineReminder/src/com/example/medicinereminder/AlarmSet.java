@@ -58,59 +58,31 @@ public class AlarmSet {
     }
 	
 
-    public void setAlarm(String time, int remainder_time) {
-    	char [] timearr = time.toCharArray();
-    	String hour = null;
-    	String minute = null;
-    	boolean ddigits = false;
-    	char part;
-    	if(timearr[1]!=':'){
-    		hour = ((Character)timearr[0]).toString() +((Character)timearr[1]).toString();
-    		minute = ((Character)timearr[3]).toString() +((Character)timearr[4]).toString();
-    	}
-    	else{
-    		ddigits = true;
-    		hour = ((Character)timearr[0]).toString();
-			minute = ((Character)timearr[2]).toString() +((Character)timearr[3]).toString();
-    	}	
-    	int hour_i = Integer.parseInt(hour);
-    	int minute_i =Integer.parseInt(minute);
-    	
-    	if(ddigits==true)
-    		part = timearr[4];
-    	else
-    		part = timearr[5];
-    	
-    	if (part=='p')
-    		hour_i=hour_i+12;
-    	
-    	minute_i -= (remainder_time*5);
-    	
-    	System.out.println("hour: " + hour_i + " minute: " + minute_i + " Remainder: " + remainder_time);
+    public void setAlarm(int hour, int minute, int remainder_time) {
+    	minute -= (remainder_time*5);
+    	System.out.println("hour: " + hour + " minute: " + minute + " Remainder: " + remainder_time);
         // We want the alarm to go off 30 seconds from now.
     	Time tm = new Time();
         tm.setToNow();
-        tm.minute = minute_i;
-        tm.hour = hour_i;
+        tm.minute = minute;
+        tm.hour = hour;
         tm.second= 0;
         tm.normalize(false);
         long firstTime = tm.toMillis(false);
         // Schedule the alarm!
         AlarmManager am = (AlarmManager)mContext.getSystemService(Context.ALARM_SERVICE);
-            am.set(AlarmManager.RTC_WAKEUP,
-                            firstTime, mAlarmSender);
+            am.set(AlarmManager.RTC_WAKEUP, firstTime, mAlarmSender);
 
-            // Tell the user about what we did.
-            Toast.makeText(mContext, R.string.scheduled,
-                    Toast.LENGTH_LONG).show();
-            showNotification();
+        // Tell the user about what we did.
+        Toast.makeText(mContext, R.string.scheduled,
+        		Toast.LENGTH_LONG).show();
+        showNotification();
     }
 
     public void stopAlarm(){
-            // And cancel the alarm.
+            // cancel the alarm.
             AlarmManager am = (AlarmManager)mContext.getSystemService(Context.ALARM_SERVICE);
             am.cancel(mAlarmSender);
-
             // Tell the user about what we did.
             Toast.makeText(mContext, R.string.unscheduled,
                     Toast.LENGTH_LONG).show();

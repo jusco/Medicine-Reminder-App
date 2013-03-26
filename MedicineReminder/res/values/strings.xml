@@ -32,6 +32,7 @@
 	<string name="appointmenttitle">When are your next appointments?</string>
 	<string name="appointment">My appointment is...</string>
 	<string name="refilltitle">My next refill is...</string>
+	<string name="avatartitle">Choose an avatar!</string>
 	
 	<string-array name="sleep_array">
         <item>5</item>
