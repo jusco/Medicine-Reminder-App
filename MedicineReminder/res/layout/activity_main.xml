@@ -213,14 +213,35 @@
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:text="@string/remindertime"
-                android:textSize="8pt" >
-            </TextView>
+                android:textSize="8pt" />
 
-            <NumberPicker
-                android:id="@+id/np"
+            
+            <LinearLayout 
+                android:id="@+id/NumberPicker"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:width="100dip" />
+                android:orientation="horizontal">
+                	<Button
+                	android:id="@+id/bSub"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="-" />
+                	<TextView 
+                	    android:id="@+id/tvDisplay"
+                	    android:layout_width="wrap_content"
+                		android:layout_height="wrap_content"
+                		android:text="0"/>
+                	<Button
+                	android:id="@+id/bAdd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="+" />
+                	
+                
+            </LinearLayout>
+
 
             <TextView
                 android:id="@+id/ReminderTimeCont"

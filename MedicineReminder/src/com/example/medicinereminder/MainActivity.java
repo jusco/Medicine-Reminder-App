@@ -14,9 +14,11 @@ import android.content.Intent;
 import android.text.InputType;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.NumberPicker;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import android.widget.LinearLayout;
@@ -27,21 +29,36 @@ import android.widget.ViewFlipper;
 @SuppressLint("NewApi")
 public class MainActivity extends Activity {
 	protected static String date;
+	protected int counter;
+	protected TextView display;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		NumberPicker np = (NumberPicker) findViewById(R.id.np);
-		np.setMaxValue(12);
-		np.setMinValue(0);
-		String[] vals = new String[13];
-		for (int i = 0; i < vals.length; i++) {
-			vals[i] = Integer.toString(i * 5) + " min";
+		counter = 0;
+		Button add = (Button) findViewById(R.id.bAdd);
+		Button sub = (Button) findViewById(R.id.bSub);
+		display = (TextView) findViewById(R.id.tvDisplay);
+
+		add.setOnClickListener(new View.OnClickListener() {
+
+		    public void onClick(View v) {
+		    counter += 5;
+		    display.setText( "" + counter);
+		    }
+		});
+
+		sub.setOnClickListener(new View.OnClickListener() {
+
+		    public void onClick(View v) {
+		    counter -= 5;
+		    display.setText( "" + counter);
+		    }
+		});
+
 		}
-		np.setWrapSelectorWheel(false);
-		np.setDisplayedValues(vals);
-	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -98,7 +115,7 @@ public class MainActivity extends Activity {
 		for( int i = 0; i<times.getChildCount(); i++ )
 			medicineTimes.add(((EditText) times.getChildAt(i)).getText().toString());
 
-		int remindertime = ((NumberPicker) findViewById(R.id.np)).getValue();
+		int remindertime = counter;
 		AlarmSet alarmset = new AlarmSet(this);
 		alarmset.setAlarm(medicineTimes.get(0), remindertime);
 
