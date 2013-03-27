@@ -1,5 +1,7 @@
 package com.example.medicinereminder;
 
+import java.util.ArrayList;
+
 
 public class MyGuy  {
     private static final MyGuy user = new MyGuy();
@@ -9,6 +11,8 @@ public class MyGuy  {
     String fullName;
     String phoneNumer;
     String alarmMessage;
+    ArrayList<int[]> alarmTimes;
+    int alarmCount;
 
     // Private constructor prevents instantiation from other classes
     private MyGuy() {
@@ -39,6 +43,14 @@ public class MyGuy  {
     
     public void setAlarmMessage(String message){
     	alarmMessage = message;
+    }
+    
+    public void setAlarmTime(ArrayList<int[]> alarmTimes){
+    	this.alarmTimes = alarmTimes;
+    }
+    
+    public void setAlarmCount(int alarmCount){
+    	this.alarmCount = alarmCount;
     }
     
 }
