@@ -37,6 +37,14 @@
             android:name="com.example.medicinereminder.SettingsActivity"
             android:label="@string/title_activity_settings" >
         </activity>
+        <activity
+            android:name="com.example.medicinereminder.BasicInfoActivity"
+            android:label="@string/title_activity_basic_info" >
+        </activity>
+        <activity
+            android:name="com.example.medicinereminder.SettingsRemindersActivity"
+            android:label="@string/title_activity_settings_reminders" >
+        </activity>
     </application>
 
 </manifest>
