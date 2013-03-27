@@ -1,0 +1,81 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SettingsBasicInfoActivity" >
+
+    <LinearLayout
+            android:id="@+id/FirstPage"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/FormTitle1"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:text="@string/feedbacktitle"
+                android:textSize="10pt" >
+            </TextView>
+
+            <EditText
+                android:id="@+id/EditFirstName1"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="@string/firstname"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/EditLastName1"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:hint="@string/lastname"
+                android:inputType="textPersonName" >
+            </EditText>
+
+            <EditText
+                android:id="@+id/EditViralLoad1"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:hint="@string/viralload"
+                android:inputType="number" >
+            </EditText>
+
+            <EditText
+                android:id="@+id/EditPhone1"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:hint="@string/phone"
+                android:inputType="phone" >
+            </EditText>
+
+            <EditText
+                android:id="@+id/EditProviderPhone1"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:hint="@string/providerphone"
+                android:inputType="phone" >
+            </EditText>
+
+            <Button
+                android:id="@+id/SaveButton"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:onClick="saveInfo"
+                android:text="save" />
+        </LinearLayout>
+
+
+</RelativeLayout>

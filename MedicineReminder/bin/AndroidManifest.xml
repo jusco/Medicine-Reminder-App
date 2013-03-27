@@ -45,6 +45,22 @@
             android:name="com.example.medicinereminder.SettingsRemindersActivity"
             android:label="@string/title_activity_settings_reminders" >
         </activity>
+        <activity
+            android:name="com.example.medicinereminder.SettingsRefillsActivity"
+            android:label="@string/title_activity_settings_refills" >
+        </activity>
+        <activity
+            android:name="com.example.medicinereminder.SettingsAppointmentsActivity"
+            android:label="@string/title_activity_settings_appointments" >
+        </activity>
+        <activity
+            android:name="com.example.medicinereminder.SettingsMedicationActivity"
+            android:label="@string/title_activity_settings_medication" >
+        </activity>
+        <activity
+            android:name="com.example.medicinereminder.SettingsBasicInfoActivity"
+            android:label="@string/title_activity_settings_basic_info" >
+        </activity>
     </application>
 
 </manifest>

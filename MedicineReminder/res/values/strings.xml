@@ -31,5 +31,9 @@
     <string name="myremindermessage">My custom text...</string>
     <string name="title_activity_basic_info">BasicInfoActivity</string>
     <string name="title_activity_settings_reminders">SettingsRemindersActivity</string>
+    <string name="title_activity_settings_refills">SettingsRefillsActivity</string>
+    <string name="title_activity_settings_appointments">SettingsAppointmentsActivity</string>
+    <string name="title_activity_settings_medication">SettingsMedicationActivity</string>
+    <string name="title_activity_settings_basic_info">SettingsBasicInfoActivity</string>
 
 </resources>
