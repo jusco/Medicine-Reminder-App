@@ -26,13 +26,13 @@ public class SettingsBasicInfoActivity extends Activity {
 		lastNameText.setText(MyGuy.getUser().lastName);
 		
 		EditText viralLoadText = (EditText)findViewById(R.id.EditViralLoad1);
-		viralLoadText.setText(MyGuy.getUser().firstName);
+		viralLoadText.setText(MyGuy.getUser().viralCount);
 		
 		EditText phoneText = (EditText)findViewById(R.id.EditPhone1);
 		phoneText.setText(MyGuy.getUser().phoneNumer);
 		
-		EditText providerText = (EditText)findViewById(R.id.EditPhone1);
-		providerText.setText(MyGuy.getUser().firstName);
+		EditText providerText = (EditText)findViewById(R.id.EditProviderPhone1);
+		providerText.setText(MyGuy.getUser().providerPhoneNumber);
 	
 	}
 
@@ -56,6 +56,9 @@ public class SettingsBasicInfoActivity extends Activity {
 		MyGuy.getUser().setFirstName(firstName);
 		MyGuy.getUser().setLastName(lastName);
 		MyGuy.getUser().setPhoneNumer(phone);
+		MyGuy.getUser().setProviderPhoneNumer(provider);
+		MyGuy.getUser().setViralCount(viralLoad);
+		finish();
 	}
 
 }

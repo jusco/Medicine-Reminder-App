@@ -138,8 +138,7 @@ public class MainActivity extends Activity {
 		
 		String custommessage = ((EditText) findViewById(R.id.EditReminderMessage)).getText().toString();
 		
-		Intent intent = new Intent(this, HomePageActivity.class);
-		startActivity(intent);
+
 		
 		
 		//Set Static User Attributes based off submission form
@@ -147,6 +146,11 @@ public class MainActivity extends Activity {
 		MyGuy.getUser().setLastName(lastName);
 		MyGuy.getUser().setPhoneNumer(phone);
 		MyGuy.getUser().setAlarmMessage(custommessage);
+		MyGuy.getUser().setProviderPhoneNumer(provider);
+		MyGuy.getUser().setViralCount(viralLoad);
+		
+		Intent intent = new Intent(this, HomePageActivity.class);
+		startActivity(intent);
 	}
 	
 	

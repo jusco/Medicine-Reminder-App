@@ -9,7 +9,9 @@ public class MyGuy  {
     String firstName;
     String lastName;
     String fullName;
+    String viralCount;
     String phoneNumer;
+    String providerPhoneNumber;
     String alarmMessage;
     ArrayList<int[]> alarmTimes;
     int alarmCount;
@@ -39,6 +41,14 @@ public class MyGuy  {
   
     public void setPhoneNumer(String num){
     	phoneNumer = num;
+    }
+    
+    public void setProviderPhoneNumer(String num){
+    	providerPhoneNumber = num;
+    }
+    
+    public void setViralCount(String num){
+    	viralCount = num;
     }
     
     public void setAlarmMessage(String message){

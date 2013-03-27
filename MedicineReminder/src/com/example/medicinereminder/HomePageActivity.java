@@ -37,5 +37,12 @@ public class HomePageActivity extends Activity {
 		Intent intent = new Intent(this, SettingsActivity.class);
 		startActivity(intent);
 	}	
+	
+	public void onResume(){
+		TextView fullNameText = (TextView)findViewById(R.id.fullNameText);
+
+		fullNameText.setText(MyGuy.getUser().fullName);
+		super.onResume();
+	}
 
 }
