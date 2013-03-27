@@ -12,17 +12,15 @@ public class HomePageActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home_page);
 		
-		TextView fullNameText = (TextView)findViewById(R.id.fullNameView);
-		TextView phoneNumberText = (TextView)findViewById(R.id.phoneNumberView);
+		TextView fullNameText = (TextView)findViewById(R.id.fullNameText);
 
-		fullNameText.setText(MyGuy.getUser().firstName);
-		phoneNumberText.setText(MyGuy.getUser().phoneNumer);
+		fullNameText.setText(MyGuy.getUser().fullName);
+
 
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		String temp = "";
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.activity_home_page, menu);
 		return true;

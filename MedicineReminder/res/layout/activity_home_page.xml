@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background1"
     tools:context=".HomePageActivity" >
 
     <TextView
@@ -11,21 +12,44 @@
         android:layout_centerVertical="true" />
 
     <TextView
-        android:id="@+id/fullNameView"
+        android:id="@+id/MEDCheckTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:text="name"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:paddingLeft="15dp"
+        android:paddingTop="10dp"
+        android:text="MEDCheck"
+        android:textColor="@android:color/black"
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/phoneNumberView"
+        android:id="@+id/welcomeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/fullNameView"
-        android:text="phone#"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:layout_alignParentRight="false"
+        android:layout_alignParentTop="false"
+        android:layout_below="@+id/MEDCheckTitle"
+        android:paddingLeft="15dp"
+        android:text="Welcome Back, "
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@android:color/black"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/fullNameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/welcomeText"
+        android:layout_toRightOf="@+id/welcomeText"
+        android:paddingLeft="0dp"
+        android:paddingRight="15dp"
+        android:text="username"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@android:color/black"
+        android:textSize="18sp" />
 
 </RelativeLayout>

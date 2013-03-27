@@ -30,7 +30,7 @@ public class MyGuy  {
     }
     
     public void setFullName(){
-    	fullName = firstName + lastName;
+    	fullName = firstName + " " + lastName;
     }
   
     public void setPhoneNumer(String num){
