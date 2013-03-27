@@ -1,5 +1,7 @@
 package com.example.medicinereminder;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.Notification;
@@ -25,6 +27,7 @@ public class AlarmSet {
     private PendingIntent mAlarmSender;
 	private Context mContext;
 	NotificationManager mNM;
+	
     
 	public AlarmSet(Context context){
 		mNM = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
@@ -58,31 +61,11 @@ public class AlarmSet {
     }
 	
 
-    public void setAlarm(String time, int remainder_time) {
-    	char [] timearr = time.toCharArray();
-    	String hour = null;
-    	String minute = null;
-    	boolean ddigits = false;
-    	char part;
-    	if(timearr[1]!=':'){
-    		hour = ((Character)timearr[0]).toString() +((Character)timearr[1]).toString();
-    		minute = ((Character)timearr[3]).toString() +((Character)timearr[4]).toString();
-    	}
-    	else{
-    		ddigits = true;
-    		hour = ((Character)timearr[0]).toString();
-			minute = ((Character)timearr[2]).toString() +((Character)timearr[3]).toString();
-    	}	
-    	int hour_i = Integer.parseInt(hour);
-    	int minute_i =Integer.parseInt(minute);
+    public void setAlarm(int remainder_time) {
+    
+    	int hour_i = 0;
+    	int minute_i = 0;
     	
-    	if(ddigits==true)
-    		part = timearr[4];
-    	else
-    		part = timearr[5];
-    	
-    	if (part=='p')
-    		hour_i=hour_i+12;
     	
     	minute_i -= (remainder_time*5);
     	

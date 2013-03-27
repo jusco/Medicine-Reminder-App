@@ -155,14 +155,16 @@
                     android:layout_height="fill_parent"
                     android:orientation="vertical" >
 
-                    <EditText
-                        android:id="@+id/EditTime"
-                        android:layout_width="fill_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:hint="@string/medicinetime"
-                        android:inputType="time" >
-                    </EditText>
+               <EditText
+                android:id="@+id/EditTime"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:focusableInTouchMode="false"
+                android:inputType="time"
+                android:onClick="showTimePickerDialog"
+                android:text="@string/medicinetime" >
+            </EditText>
                 </LinearLayout>
 
                 <Button
