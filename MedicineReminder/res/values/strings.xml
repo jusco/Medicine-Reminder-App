@@ -29,5 +29,7 @@
     <string name="unscheduled">Alarm Unscheduled</string>
     <string name="remindermessage">What message should appear when you are reminded?</string>
     <string name="myremindermessage">My custom text...</string>
+    <string name="title_activity_basic_info">BasicInfoActivity</string>
+    <string name="title_activity_settings_reminders">SettingsRemindersActivity</string>
 
 </resources>
