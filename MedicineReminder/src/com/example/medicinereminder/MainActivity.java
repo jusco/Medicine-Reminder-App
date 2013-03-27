@@ -130,8 +130,11 @@ public class MainActivity extends Activity {
 
 		
 		int remindertime = ((NumberPicker) findViewById(R.id.np)).getValue();
-		//AlarmSet alarmset = new AlarmSet(this);
-		//alarmset.setAlarm(remindertime);
+		
+		MyGuy.getUser().setAlarmTime(alarmtimes);
+		MyGuy.getUser().setAlarmCount(0);
+		AlarmSet alarmset = new AlarmSet(this);
+		alarmset.setAlarm(remindertime);
 		
 		String custommessage = ((EditText) findViewById(R.id.EditReminderMessage)).getText().toString();
 		
