@@ -1,0 +1,62 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".RegistrationMessageActivity" >
+
+    <LinearLayout
+            android:id="@+id/FourthPage"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/ReminderMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:text="@string/remindermessage"
+                android:textSize="8pt" >
+            </TextView>
+
+            <EditText
+                android:id="@+id/EditReminderMessage"
+                android:gravity="top|left"
+                android:layout_width="fill_parent"
+                android:layout_height="200dp"
+                android:hint="@string/myremindermessage"
+                android:inputType="textMultiLine" >
+            </EditText>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/PrevButton4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="toPrevPage"
+                    android:text="@string/prev" />
+
+                <Button
+                    android:id="@+id/NextButton4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="toNextPage"
+                    android:text="@string/next" />
+            </LinearLayout>
+        </LinearLayout>
+
+</RelativeLayout>

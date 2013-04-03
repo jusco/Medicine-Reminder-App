@@ -2,5 +2,6 @@
 <lint>
     <issue id="NewApi">
         <ignore path="src\com\example\medicinereminder\MainActivity.java" />
+        <ignore path="src\com\example\medicinereminder\RegistrationRemindersActivity.java" />
     </issue>
 </lint>

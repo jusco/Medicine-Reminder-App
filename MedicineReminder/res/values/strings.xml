@@ -29,11 +29,43 @@
     <string name="unscheduled">Alarm Unscheduled</string>
     <string name="remindermessage">What message should appear when you are reminded?</string>
     <string name="myremindermessage">My custom text...</string>
+    <string name="appointmenttitle">Set your appointments</string>
+    <string name="avatartitle">Choose Your Avatar</string>
+    <string name="refilltitle">Set your refill dates</string>
+    <string name="okmessage">You have missed three alarms, are you okay?</string>
     <string name="title_activity_basic_info">BasicInfoActivity</string>
     <string name="title_activity_settings_reminders">SettingsRemindersActivity</string>
     <string name="title_activity_settings_refills">SettingsRefillsActivity</string>
     <string name="title_activity_settings_appointments">SettingsAppointmentsActivity</string>
     <string name="title_activity_settings_medication">SettingsMedicationActivity</string>
     <string name="title_activity_settings_basic_info">SettingsBasicInfoActivity</string>
+    <string name="title_activity_registration_basic_info">RegistrationBasicInfoActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_registration_medication">RegistrationMedicationActivity</string>
+    <string name="title_activity_registration_reminders">RegistrationRemindersActivity</string>
+    <string name="title_activity_registration_message">RegistrationMessageActivity</string>
+    <string name="title_activity_registration_appointments">RegistrationAppointmentsActivity</string>
+    <string name="title_activity_registration_refills">RegistrationRefillsActivity</string>
+    <string name="title_activity_registration_avatar">RegistrationAvatarActivity</string>
+
+    <string-array name="sleep_array">
+        <item>5</item>
+        <item>10</item>
+        <item>15</item>
+        <item>30</item>
+        <item>45</item>
+        <item>60</item>
+    </string-array>
+    
+    <string-array name="rem_array">
+        <item>0</item>
+        <item>5</item>
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+        <item>25</item>
+    </string-array>
+
+    <string name="title_activity_registration_reminders_gb">RegistrationRemindersGBActivity</string>
 
 </resources>

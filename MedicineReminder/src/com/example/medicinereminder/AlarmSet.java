@@ -43,7 +43,6 @@ public class AlarmSet {
     	
     	
     	System.out.println( " minute: " + minute_i);
-        // We want the alarm to go off 30 seconds from now.
     	Time tm = new Time();
         tm.setToNow();
         tm.minute = tm.minute+ minute_i;
