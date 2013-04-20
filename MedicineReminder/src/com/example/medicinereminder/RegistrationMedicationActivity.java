@@ -143,17 +143,51 @@ public class RegistrationMedicationActivity extends FragmentActivity {
 		}
 	}
 	
+	private void sortTimes(){
+		int [] min_time={100,100};
+		int min_index = 0;
+		int [] temp;
+		ArrayList<int[]> newList = new ArrayList<int[]>();
+		int total = alarmtimes.size();
+		for(int j=0; j< total;j++){
+			min_time[0] = 100;
+			min_time[1] = 100;
+		for(int i=0; i< alarmtimes.size();i++){
+			temp = alarmtimes.get(i);
+			if(temp[0]<min_time[0]){
+				if(min_time[0]!=temp[0]){
+					min_time[0] = temp[0];
+					min_time[1] = temp[1];
+					min_index = i;
+				}
+				else{
+					if(temp[1]<min_time[1]){
+						min_time[0] = temp[0];
+						min_time[1] = temp[1];
+						min_index =i;
+					}
+				}
+			}
+					
+		}
+		System.out.print("min index " + min_index + "  min_hour " + min_time[0] 
+				+ " min_min " + min_time[1] );
+		alarmtimes.remove(min_index);
+		newList.add(min_time);
+		}
+		alarmtimes = newList;
+	}
+	
 	public void toNextPage(View v){
 		ArrayList<String> medicineNames = new ArrayList<String>();
 		LinearLayout medicines = (LinearLayout)findViewById(R.id.medicineBoxes);
 		for( int i = 0; i<medicines.getChildCount(); i++ )
 		    medicineNames.add(((EditText) medicines.getChildAt(i)).getText().toString());
-		
+		//sortTimes();
 		AlarmTracker.getTracker().setMedicines(medicineNames);
 		AlarmTracker.getTracker().setAlarmTime(alarmtimes);
 		AlarmTracker.getTracker().setAlarmCount(0);
-		//AlarmSet alarmset = new AlarmSet(this);
-		//alarmset.setAlarm(remindertime); //Do this when we get the reminder time
+		
 		Intent intent;
 		if(android.os.Build.VERSION.SDK_INT > android.os.Build.VERSION_CODES.HONEYCOMB)
 			intent = new Intent(this, RegistrationRemindersActivity.class);

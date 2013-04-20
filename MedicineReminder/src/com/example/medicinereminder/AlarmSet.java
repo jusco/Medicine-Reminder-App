@@ -76,6 +76,10 @@ public class AlarmSet {
         tm.minute = minute_i;
         tm.hour = hour_i;
         tm.second= 0;
+        Time tim = new Time();
+        tim.setToNow();
+        if(tim.after(tm))
+        	tm.monthDay++; //Set the alarm tomorrow if it has already passed
         tm.normalize(false);
         long firstTime = tm.toMillis(false);
         // Schedule the alarm!
