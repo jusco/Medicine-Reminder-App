@@ -29,7 +29,7 @@ public class AlarmPage extends Activity {
 		setContentView(R.layout.alarm_page);
 		
 		TextView out = (TextView)findViewById(R.id.alarmMessage);
-		out.append(MyGuy.getUser().alarmMessage);
+		out.append(AlarmTracker.getTracker().alarmMessage);
 
 		Spinner spinner = (Spinner) findViewById(R.id.editSleep);
 // 		Create an ArrayAdapter using the string array and a default spinner layout
@@ -68,7 +68,7 @@ public class AlarmPage extends Activity {
 	}
 	
 	public void onIgnoreButtonClick(View view){
-		int count =MyGuy.getUser().alarmCount;
+		int count =AlarmTracker.getTracker().alarmCount;
 		if (count==3){
 			Toast.makeText(this, R.string.okmessage,
                     Toast.LENGTH_LONG).show();

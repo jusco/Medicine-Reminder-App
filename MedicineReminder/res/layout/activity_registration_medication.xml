@@ -44,10 +44,19 @@
                         android:layout_width="fill_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
+                        android:tag="1"
                         android:hint="@string/medicinename"
                         android:inputType="text" >
                     </EditText>
                 </LinearLayout>
+                
+                <Button
+                    android:id="@+id/AddButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:onClick="addMedicineBox"
+                    android:text="@string/addmedicine" />
 
                 <TextView
                     android:id="@+id/FormTitleTime"
@@ -75,17 +84,18 @@
                 android:layout_weight="1"
                 android:focusableInTouchMode="false"
                 android:inputType="time"
+                android:tag="1"
                 android:onClick="showTimePickerDialog"
                 android:text="@string/medicinetime" >
             </EditText>
                 </LinearLayout>
 
                 <Button
-                    android:id="@+id/AddButton"
+                    android:id="@+id/AddButton2"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:onClick="addMedicineBox"
+                    android:onClick="addTimeBox"
                     android:text="@string/addmedicine" />
 
                 <LinearLayout

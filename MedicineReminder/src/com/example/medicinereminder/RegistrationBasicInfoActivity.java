@@ -24,6 +24,7 @@ import android.widget.ViewFlipper;
 
 public class RegistrationBasicInfoActivity extends FragmentActivity  {
 	protected static String date;
+	protected static EditText dateText;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +69,7 @@ public class RegistrationBasicInfoActivity extends FragmentActivity  {
 		DialogFragment newFragment = new DatePickerFragment();
 		FragmentManager fg= getSupportFragmentManager();
 		newFragment.show(fg, "datePicker");
+		dateText = (EditText)findViewById(R.id.EditDate);
 	}
 
 	public static class DatePickerFragment extends DialogFragment
@@ -86,7 +88,9 @@ public class RegistrationBasicInfoActivity extends FragmentActivity  {
 		}
 
 		public void onDateSet(DatePicker view, int year, int month, int day) {
-			date = Integer.toString(year)+Integer.toString(month)+Integer.toString(day);
+			date = Integer.toString(month+1)+ "/" + Integer.toString(day) +
+					"/" + Integer.toString(year);
+			dateText.setText(date);
 		}
 	}
 	

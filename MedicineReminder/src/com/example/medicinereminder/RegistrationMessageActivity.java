@@ -29,7 +29,7 @@ public class RegistrationMessageActivity extends Activity {
 	
 	public void toNextPage(View v){
 		String custommessage = ((EditText) findViewById(R.id.EditReminderMessage)).getText().toString();
-		MyGuy.getUser().setAlarmMessage(custommessage);
+		AlarmTracker.getTracker().setAlarmMessage(custommessage);
 		Intent intent = new Intent(this, RegistrationAppointmentsActivity.class);
 		startActivity(intent);
 		finish();

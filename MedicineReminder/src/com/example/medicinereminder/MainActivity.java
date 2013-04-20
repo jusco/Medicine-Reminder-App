@@ -131,8 +131,8 @@ public class MainActivity extends Activity {
 		
 		int remindertime = ((NumberPicker) findViewById(R.id.np)).getValue();
 		
-		MyGuy.getUser().setAlarmTime(alarmtimes);
-		MyGuy.getUser().setAlarmCount(0);
+		AlarmTracker.getTracker().setAlarmTime(alarmtimes);
+		AlarmTracker.getTracker().setAlarmCount(0);
 		AlarmSet alarmset = new AlarmSet(this);
 		alarmset.setAlarm(remindertime);
 		
@@ -145,7 +145,7 @@ public class MainActivity extends Activity {
 		MyGuy.getUser().setFirstName(firstName);
 		MyGuy.getUser().setLastName(lastName);
 		MyGuy.getUser().setPhoneNumer(phone);
-		MyGuy.getUser().setAlarmMessage(custommessage);
+		AlarmTracker.getTracker().setAlarmMessage(custommessage);
 		MyGuy.getUser().setProviderPhoneNumer(provider);
 		MyGuy.getUser().setViralCount(viralLoad);
 		

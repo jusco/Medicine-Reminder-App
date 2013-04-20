@@ -13,9 +13,7 @@ public class MyGuy  {
     String phoneNumer;
     String providerPhoneNumber;
     String diagDate;
-    String alarmMessage;
-    ArrayList<int[]> alarmTimes;
-    int alarmCount;
+    
 
     // Private constructor prevents instantiation from other classes
     private MyGuy() {
@@ -56,16 +54,6 @@ public class MyGuy  {
     	diagDate = date;
     }
     
-    public void setAlarmMessage(String message){
-    	alarmMessage = message;
-    }
-    
-    public void setAlarmTime(ArrayList<int[]> alarmTimes){
-    	this.alarmTimes = alarmTimes;
-    }
-    
-    public void setAlarmCount(int alarmCount){
-    	this.alarmCount = alarmCount;
-    }
+   
     
 }

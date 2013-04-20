@@ -61,8 +61,8 @@ public class AlarmSet {
 	
 
     public void setAlarm(int remainder_time) {
-       int count = MyGuy.getUser().alarmCount;
-    	int [] arr = MyGuy.getUser().alarmTimes.get(count);
+       int count = AlarmTracker.getTracker().alarmCount;
+    	int [] arr = AlarmTracker.getTracker().alarmTimes.get(count);
     	int hour_i = arr[0];
     	int minute_i = arr[1];
     	
@@ -87,9 +87,9 @@ public class AlarmSet {
             Toast.makeText(mContext, R.string.scheduled,
                     Toast.LENGTH_LONG).show();
             showNotification();
-            MyGuy.getUser().alarmCount++;
-            if(MyGuy.getUser().alarmCount >= MyGuy.getUser().alarmTimes.size())
-            	MyGuy.getUser().setAlarmCount(0);
+            AlarmTracker.getTracker().alarmCount++;
+            if(AlarmTracker.getTracker().alarmCount >= AlarmTracker.getTracker().alarmTimes.size())
+            	AlarmTracker.getTracker().setAlarmCount(0);
     }
 
     public void stopAlarm(){
