@@ -13,6 +13,7 @@ public class MyGuy  {
     String phoneNumer;
     String providerPhoneNumber;
     String diagDate;
+    int avatar;
     
 
     // Private constructor prevents instantiation from other classes
@@ -52,6 +53,10 @@ public class MyGuy  {
     
     public void setDiagDate(String date){
     	diagDate = date;
+    }
+    
+    public void setAvatar(int avatar){
+    	this.avatar = avatar;
     }
     
    

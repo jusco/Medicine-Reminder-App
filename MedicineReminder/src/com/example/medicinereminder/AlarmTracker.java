@@ -1,6 +1,7 @@
 package com.example.medicinereminder;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class AlarmTracker {
 	private static final AlarmTracker tracker = new AlarmTracker();
@@ -9,6 +10,9 @@ public class AlarmTracker {
     ArrayList<int[]> alarmTimes;
     int alarmCount;
     ArrayList<String> medicines;
+    int reminder;
+    ArrayList<Date> appointments;
+    ArrayList<Date> refills;
     
     private AlarmTracker() {
     	
@@ -32,5 +36,17 @@ public class AlarmTracker {
     
     public void setMedicines(ArrayList<String> medicines){
     	this.medicines = medicines;
+    }
+    
+    public void setReminder(int reminder){
+    	this.reminder = reminder;
+    }
+    
+    public void setAppt(ArrayList<Date> appts){
+    	this.appointments = appts;
+    }
+    
+    public void setRefill(ArrayList<Date> refill){
+    	this.refills = refill;
     }
 }

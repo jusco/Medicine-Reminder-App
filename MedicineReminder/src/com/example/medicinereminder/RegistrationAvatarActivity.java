@@ -8,11 +8,17 @@ import android.view.Menu;
 import android.view.View;
 
 public class RegistrationAvatarActivity extends Activity {
-
+	private int avatar;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_registration_avatar);
+		this.avatar= MyGuy.getUser().avatar;
+		if(avatar > 0 && avatar < 2){
+			View images = findViewById(R.id.SeventhPage);
+			View image = images.findViewWithTag(Integer.toString(avatar));
+			image.setBackgroundColor(Color.RED);
+		}
 	}
 
 	@Override
@@ -23,6 +29,7 @@ public class RegistrationAvatarActivity extends Activity {
 	}
 	
 	public void submitForm(View v){
+		MyGuy.getUser().setAvatar(avatar);
 		Intent intent = new Intent(this, HomePageActivity.class);
 		startActivity(intent);
 		finish();
@@ -30,6 +37,7 @@ public class RegistrationAvatarActivity extends Activity {
 	
 
 	public void toPrevPage(View v){
+		MyGuy.getUser().setAvatar(avatar);
 		Intent intent = new Intent(this, RegistrationRefillsActivity.class);
 		startActivity(intent);
 		finish();
@@ -37,6 +45,8 @@ public class RegistrationAvatarActivity extends Activity {
 	
 	public void selectAvatar(View v){
 		v.setBackgroundColor(Color.RED);
+		String tag =(String)v.getTag();
+		avatar = Integer.parseInt(tag);
 		/*TODO Store avatar on click. Also, set other avatars background color to grey, so that
 		 *only one is selected at a time.
 		 */

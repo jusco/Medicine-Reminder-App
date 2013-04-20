@@ -18,6 +18,11 @@ public class RegistrationMessageActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_registration_message);
+		
+		if(AlarmTracker.getTracker().alarmMessage != null){
+			EditText text = (EditText) findViewById(R.id.EditReminderMessage);
+			text.setText(AlarmTracker.getTracker().alarmMessage);
+		}
 	}
 
 	@Override

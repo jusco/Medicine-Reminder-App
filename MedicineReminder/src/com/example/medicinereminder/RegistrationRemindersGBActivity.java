@@ -52,11 +52,13 @@ public class RegistrationRemindersGBActivity extends Activity {
 		return true;
 	}
 	public void toNextPage(View v){
-		
-		AlarmSet alarmset = new AlarmSet(this);
 		int remindertime = Integer.parseInt(time);
 		remindertime= remindertime /5 ;
-		alarmset.setAlarm(remindertime);
+		
+		//Don't set the alarm here either
+		//AlarmSet alarmset = new AlarmSet(this);
+		//alarmset.setAlarm(remindertime);
+		AlarmTracker.getTracker().setReminder(remindertime);
 		
 		Intent intent = new Intent(this, RegistrationMessageActivity.class);
 		startActivity(intent);

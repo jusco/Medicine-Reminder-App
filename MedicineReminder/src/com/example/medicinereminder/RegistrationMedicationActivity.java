@@ -140,7 +140,6 @@ public class RegistrationMedicationActivity extends FragmentActivity {
 				alarmtimes.remove(last-1);
 			alarmtimes.add(arr);
 			lastTimeBox.setText(convertToString(hourOfDay,minute));
-			System.out.println(alarmtimes.toString());
 		}
 	}
 	
