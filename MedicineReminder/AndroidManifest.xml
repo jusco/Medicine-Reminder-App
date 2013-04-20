@@ -20,11 +20,6 @@
         <activity
             android:name="com.example.medicinereminder.RegistrationBasicInfoActivity"
             android:label="@string/app_name" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name="com.example.medicinereminder.HomePageActivity"
@@ -88,6 +83,15 @@
         <activity
             android:name="com.example.medicinereminder.RegistrationRemindersGBActivity"
             android:label="@string/title_activity_registration_reminders_gb" >
+        </activity>
+        <activity
+            android:name="com.example.medicinereminder.RegistrationStartupActivity"
+            android:label="@string/title_activity_registration_startup" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

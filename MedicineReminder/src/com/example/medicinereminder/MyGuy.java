@@ -12,6 +12,7 @@ public class MyGuy  {
     String viralCount;
     String phoneNumer;
     String providerPhoneNumber;
+    String diagDate;
     String alarmMessage;
     ArrayList<int[]> alarmTimes;
     int alarmCount;
@@ -49,6 +50,10 @@ public class MyGuy  {
     
     public void setViralCount(String num){
     	viralCount = num;
+    }
+    
+    public void setDiagDate(String date){
+    	diagDate = date;
     }
     
     public void setAlarmMessage(String message){

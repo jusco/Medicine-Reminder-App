@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="11"
+        android:minSdkVersion="8"
         android:targetSdkVersion="17" />
 
     <application
@@ -18,13 +18,8 @@
             android:process=":remote" />
 
         <activity
-            android:name="com.example.medicinereminder.MainActivity"
+            android:name="com.example.medicinereminder.RegistrationBasicInfoActivity"
             android:label="@string/app_name" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name="com.example.medicinereminder.HomePageActivity"
@@ -60,6 +55,43 @@
         <activity
             android:name="com.example.medicinereminder.SettingsBasicInfoActivity"
             android:label="@string/title_activity_settings_basic_info" >
+        </activity>
+        <activity
+            android:name="com.example.medicinereminder.RegistrationMedicationActivity"
+            android:label="@string/title_activity_registration_medication" >
+        </activity>
+        <activity
+            android:name="com.example.medicinereminder.RegistrationRemindersActivity"
+            android:label="@string/title_activity_registration_reminders" >
+        </activity>
+        <activity
+            android:name="com.example.medicinereminder.RegistrationMessageActivity"
+            android:label="@string/title_activity_registration_message" >
+        </activity>
+        <activity
+            android:name="com.example.medicinereminder.RegistrationAppointmentsActivity"
+            android:label="@string/title_activity_registration_appointments" >
+        </activity>
+        <activity
+            android:name="com.example.medicinereminder.RegistrationRefillsActivity"
+            android:label="@string/title_activity_registration_refills" >
+        </activity>
+        <activity
+            android:name="com.example.medicinereminder.RegistrationAvatarActivity"
+            android:label="@string/title_activity_registration_avatar" >
+        </activity>
+        <activity
+            android:name="com.example.medicinereminder.RegistrationRemindersGBActivity"
+            android:label="@string/title_activity_registration_reminders_gb" >
+        </activity>
+        <activity
+            android:name="com.example.medicinereminder.RegistrationStartupActivity"
+            android:label="@string/title_activity_registration_startup" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

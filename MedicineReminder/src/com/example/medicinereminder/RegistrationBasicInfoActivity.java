@@ -13,6 +13,7 @@ import android.support.v4.app.DialogFragment;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
+import android.text.Editable;
 import android.view.Menu;
 import android.view.View;
 import android.widget.DatePicker;
@@ -28,6 +29,32 @@ public class RegistrationBasicInfoActivity extends FragmentActivity  {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_registration_basic_info);
+		
+		//If we are returning back to this page - regenerate info
+		if(MyGuy.getUser().firstName != null){
+			EditText firstNameText = (EditText)findViewById(R.id.EditFirstName);
+			firstNameText.setText(MyGuy.getUser().firstName);
+		}
+		if(MyGuy.getUser().lastName != null){
+			EditText lastNameText = (EditText)findViewById(R.id.EditLastName);
+			lastNameText.setText(MyGuy.getUser().lastName);
+		}
+		if(MyGuy.getUser().diagDate != null){
+			EditText diagDateText = (EditText)findViewById(R.id.EditDate);
+			diagDateText.setText(MyGuy.getUser().diagDate);
+		}
+		if(MyGuy.getUser().viralCount != null){
+			EditText viralLoadText = (EditText)findViewById(R.id.EditViralLoad);
+			viralLoadText.setText(MyGuy.getUser().viralCount);
+		}
+		if(MyGuy.getUser().phoneNumer != null){
+			EditText phoneText = (EditText)findViewById(R.id.EditPhone);
+			phoneText.setText(MyGuy.getUser().phoneNumer);
+		}
+		if(MyGuy.getUser().providerPhoneNumber != null){
+			EditText providerText = (EditText)findViewById(R.id.EditProviderPhone);
+			providerText.setText(MyGuy.getUser().providerPhoneNumber);
+		}
 	}
 
 	@Override
@@ -66,7 +93,6 @@ public class RegistrationBasicInfoActivity extends FragmentActivity  {
 	public void toNextPage(View v){
 		String firstName = ((EditText) findViewById(R.id.EditFirstName)).getText().toString();
 		String lastName = ((EditText) findViewById(R.id.EditLastName)).getText().toString();
-		String infectionDate = date;
 		String viralLoad = ((EditText) findViewById(R.id.EditViralLoad)).getText().toString();
 		String phone = ((EditText) findViewById(R.id.EditPhone)).getText().toString();
 		String provider = ((EditText) findViewById(R.id.EditProviderPhone)).getText().toString();
@@ -76,6 +102,7 @@ public class RegistrationBasicInfoActivity extends FragmentActivity  {
 		MyGuy.getUser().setPhoneNumer(phone);
 		MyGuy.getUser().setProviderPhoneNumer(provider);
 		MyGuy.getUser().setViralCount(viralLoad);
+		MyGuy.getUser().setDiagDate(date);
 		Intent intent = new Intent(this, RegistrationMedicationActivity.class);
 		startActivity(intent);
 		finish();
