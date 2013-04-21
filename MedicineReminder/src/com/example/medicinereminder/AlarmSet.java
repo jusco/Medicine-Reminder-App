@@ -39,9 +39,6 @@ public class AlarmSet {
 	
     public void setSleep(String minute) {
     	int minute_i = Integer.parseInt(minute);
-   
-    	
-    	
     	System.out.println( " minute: " + minute_i);
     	Time tm = new Time();
         tm.setToNow();
@@ -60,17 +57,19 @@ public class AlarmSet {
     }
 	
 
-    public void setAlarm(int remainder_time) {
-       int count = AlarmTracker.getTracker().alarmCount;
-    	int [] arr = AlarmTracker.getTracker().alarmTimes.get(count);
+    public void setAlarm() {
+    	//TODO some null/undef checking here
+    	int count = AlarmTracker.getTracker().alarmCount;
+    	int remainder_time = AlarmTracker.getTracker().reminder;
+    	int [] arr;
+    	if(AlarmTracker.getTracker().alarmTimes != null)
+    		 arr = AlarmTracker.getTracker().alarmTimes.get(count);
+    	else
+    		return;
     	int hour_i = arr[0];
     	int minute_i = arr[1];
-    	
-    	
     	minute_i -= (remainder_time*5);
-    	
     	System.out.println("hour: " + hour_i + " minute: " + minute_i + " Remainder: " + remainder_time);
-        // We want the alarm to go off 30 seconds from now.
     	Time tm = new Time();
         tm.setToNow();
         tm.minute = minute_i;

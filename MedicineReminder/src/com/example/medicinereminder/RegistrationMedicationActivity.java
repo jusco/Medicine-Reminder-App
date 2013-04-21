@@ -183,6 +183,7 @@ public class RegistrationMedicationActivity extends FragmentActivity {
 		AlarmTracker.getTracker().setMedicines(medicineNames);
 		AlarmTracker.getTracker().setAlarmTime(alarmtimes);
 		AlarmTracker.getTracker().setAlarmCount(0);
+		AlarmTracker.getTracker().setMissed(0);
 		
 		Intent intent;
 		if(android.os.Build.VERSION.SDK_INT > android.os.Build.VERSION_CODES.HONEYCOMB)

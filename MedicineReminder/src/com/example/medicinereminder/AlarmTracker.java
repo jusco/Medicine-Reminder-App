@@ -13,6 +13,7 @@ public class AlarmTracker {
     int reminder;
     ArrayList<Date> appointments;
     ArrayList<Date> refills;
+    int missedAlarms;
     
     private AlarmTracker() {
     	
@@ -49,4 +50,9 @@ public class AlarmTracker {
     public void setRefill(ArrayList<Date> refill){
     	this.refills = refill;
     }
+    
+    public void setMissed(int missed){
+    	this.missedAlarms = missed;
+    }
+    
 }

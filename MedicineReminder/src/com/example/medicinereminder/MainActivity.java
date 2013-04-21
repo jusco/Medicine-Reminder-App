@@ -134,7 +134,7 @@ public class MainActivity extends Activity {
 		AlarmTracker.getTracker().setAlarmTime(alarmtimes);
 		AlarmTracker.getTracker().setAlarmCount(0);
 		AlarmSet alarmset = new AlarmSet(this);
-		alarmset.setAlarm(remindertime);
+		alarmset.setAlarm();
 		
 		String custommessage = ((EditText) findViewById(R.id.EditReminderMessage)).getText().toString();
 		

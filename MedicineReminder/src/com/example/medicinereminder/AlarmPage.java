@@ -68,11 +68,13 @@ public class AlarmPage extends Activity {
 	}
 	
 	public void onIgnoreButtonClick(View view){
-		int count =AlarmTracker.getTracker().alarmCount;
-		if (count==3){
+		int count =AlarmTracker.getTracker().missedAlarms;
+		count ++;
+		if (count>3){
 			Toast.makeText(this, R.string.okmessage,
                     Toast.LENGTH_LONG).show();
 		}
+		AlarmTracker.getTracker().setMissed(count);
 		finish();
 	}
 	

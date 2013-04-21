@@ -30,6 +30,8 @@ public class RegistrationAvatarActivity extends Activity {
 	
 	public void submitForm(View v){
 		MyGuy.getUser().setAvatar(avatar);
+		AlarmSet alarm = new AlarmSet(this);
+		alarm.setAlarm();
 		Intent intent = new Intent(this, HomePageActivity.class);
 		startActivity(intent);
 		finish();
