@@ -155,25 +155,21 @@ public class RegistrationMedicationActivity extends FragmentActivity {
 		for(int i=0; i< alarmtimes.size();i++){
 			temp = alarmtimes.get(i);
 			if(temp[0]<min_time[0]){
-				if(min_time[0]!=temp[0]){
+				min_time[0] = temp[0];
+				min_time[1] = temp[1];
+				min_index = i;
+			}
+			else if(temp[0]==min_time[0]) {
+				if(temp[1]<min_time[1]){
 					min_time[0] = temp[0];
 					min_time[1] = temp[1];
-					min_index = i;
-				}
-				else{
-					if(temp[1]<min_time[1]){
-						min_time[0] = temp[0];
-						min_time[1] = temp[1];
-						min_index =i;
-					}
+					min_index =i;
 				}
 			}
-					
-		}
-		System.out.print("min index " + min_index + "  min_hour " + min_time[0] 
-				+ " min_min " + min_time[1] );
-		alarmtimes.remove(min_index);
-		newList.add(min_time);
+			else
+				;
+			}
+		newList.add(alarmtimes.remove(min_index));
 		}
 		alarmtimes = newList;
 	}
@@ -183,7 +179,7 @@ public class RegistrationMedicationActivity extends FragmentActivity {
 		LinearLayout medicines = (LinearLayout)findViewById(R.id.medicineBoxes);
 		for( int i = 0; i<medicines.getChildCount(); i++ )
 		    medicineNames.add(((EditText) medicines.getChildAt(i)).getText().toString());
-		//sortTimes();
+		sortTimes();
 		AlarmTracker.getTracker().setMedicines(medicineNames);
 		AlarmTracker.getTracker().setAlarmTime(alarmtimes);
 		AlarmTracker.getTracker().setAlarmCount(0);
