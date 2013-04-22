@@ -20,17 +20,18 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.NumberPicker;
+import android.widget.TextView;
 import android.widget.ViewFlipper;
 
 public class RegistrationBasicInfoActivity extends FragmentActivity  {
 	protected static String date;
 	protected static EditText dateText;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_registration_basic_info);
-		
+
 		//If we are returning back to this page - regenerate info
 		if(MyGuy.getUser().firstName != null){
 			EditText firstNameText = (EditText)findViewById(R.id.EditFirstName);
@@ -64,12 +65,13 @@ public class RegistrationBasicInfoActivity extends FragmentActivity  {
 		getMenuInflater().inflate(R.menu.registration_basic_info, menu);
 		return true;
 	}
-	
+
 	public void showDatePickerDialog(View v) {
 		DialogFragment newFragment = new DatePickerFragment();
 		FragmentManager fg= getSupportFragmentManager();
 		newFragment.show(fg, "datePicker");
 		dateText = (EditText)findViewById(R.id.EditDate);
+		setDateText();
 	}
 
 	public static class DatePickerFragment extends DialogFragment
@@ -93,7 +95,7 @@ public class RegistrationBasicInfoActivity extends FragmentActivity  {
 			dateText.setText(date);
 		}
 	}
-	
+
 	public void toNextPage(View v){
 		String firstName = ((EditText) findViewById(R.id.EditFirstName)).getText().toString();
 		String lastName = ((EditText) findViewById(R.id.EditLastName)).getText().toString();
@@ -101,17 +103,64 @@ public class RegistrationBasicInfoActivity extends FragmentActivity  {
 		String phone = ((EditText) findViewById(R.id.EditPhone)).getText().toString();
 		String provider = ((EditText) findViewById(R.id.EditProviderPhone)).getText().toString();
 		//Set Static User Attributes based off submission form
-		MyGuy.getUser().setFirstName(firstName);
-		MyGuy.getUser().setLastName(lastName);
-		MyGuy.getUser().setPhoneNumer(phone);
-		MyGuy.getUser().setProviderPhoneNumer(provider);
-		MyGuy.getUser().setViralCount(viralLoad);
-		MyGuy.getUser().setDiagDate(date);
-		Intent intent = new Intent(this, RegistrationMedicationActivity.class);
-		startActivity(intent);
-		finish();
+		if (validate(firstName,lastName,viralLoad,phone,provider)){
+			MyGuy.getUser().setFirstName(firstName);
+			MyGuy.getUser().setLastName(lastName);
+			MyGuy.getUser().setPhoneNumer(phone);
+			MyGuy.getUser().setProviderPhoneNumer(provider);
+			MyGuy.getUser().setViralCount(viralLoad);
+			MyGuy.getUser().setDiagDate(date);
+			Intent intent = new Intent(this, RegistrationMedicationActivity.class);
+			startActivity(intent);
+			finish();
+		}
+	}
+
+	private boolean validate(String firstName, String lastName, String viralLoad, 
+			String phone, String provider){
+		Dialog dialog = new Dialog(this);
+		dialog.setTitle("Error");
+		TextView box = new TextView(this);
+		dialog.setContentView(box);
+		if (firstName==null || firstName.trim().equals("")){
+			box.setText("Please enter your first name.");
+			dialog.show();
+			return false;
+		}
+		if (lastName==null || lastName.trim().equals("")){
+			box.setText("Please enter your last name.");
+			dialog.show();
+			return false;
+		}
+		if(date==null){
+			box.setText("Please choose a date.");
+			dialog.show();
+			return false;
+		}
+		if(viralLoad==null || viralLoad.equals("") || !viralLoad.matches("\\d+")){
+			box.setText("Please enter your viral load.");
+			dialog.show();
+			return false;
+		}
+		if(phone==null || phone.equals("") || !phone.matches("[0-9]{3}[-\\s]?[0-9]{3}[-\\s]?[0-9]{4}")){
+			box.setText("Please enter a correct phone number.");
+			dialog.show();
+			return false;
+		}
+		if(provider==null || provider.equals("") || !provider.matches("[0-9]{3}[-\\s]?[0-9]{3}[-\\s]?[0-9]{4}")){
+			box.setText("Please enter a correct provider's phone number.");
+			dialog.show();
+			return false;
+		}
+		
+		return true;
 	}
 	
+	private void setDateText(){
+		EditText diagDateText = (EditText)findViewById(R.id.EditDate);
+		diagDateText.setText(date);
+	}
+
 
 
 }
