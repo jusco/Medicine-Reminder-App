@@ -64,7 +64,6 @@ public class RegistrationAppointmentsActivity extends Activity {
 	}
 	
 	public void toNextPage(View v){
-		//TODO Need to removed deprecated constructor for Date.
 		LinearLayout apps = (LinearLayout)findViewById(R.id.appointmentBoxes);
 		for( int i = 0; i<apps.getChildCount(); i++ ){
 			DatePicker dp = (DatePicker) apps.getChildAt(i);

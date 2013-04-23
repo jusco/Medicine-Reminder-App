@@ -19,6 +19,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.NumberPicker;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.ViewFlipper;
 
@@ -65,12 +66,12 @@ public class RegistrationMedicationActivity extends FragmentActivity {
 					editText.setText(convertToString(times.get(i)[0],times.get(i)[1]));
 					alarmtimes.add(times.get(i));
 				}
-				
+
 			}
 		}
-		
+
 	}
-	
+
 	public String convertToString(int hourOfDay, int minute){
 		String output = "";
 		String half = "am";
@@ -80,7 +81,7 @@ public class RegistrationMedicationActivity extends FragmentActivity {
 			half = "pm";
 		}
 		if(minute <10)
-			 zero = "0";
+			zero = "0";
 		output = Integer.toString(hourOfDay) + ":" + zero + Integer.toString(minute) 
 				+ " " + half;
 		return output;
@@ -92,7 +93,7 @@ public class RegistrationMedicationActivity extends FragmentActivity {
 		getMenuInflater().inflate(R.menu.registration_medication, menu);
 		return true;
 	}
-	
+
 	public void showTimePickerDialog(View v) {
 		DialogFragment newFragment = new TimePickerFragment();
 		newFragment.show(getSupportFragmentManager(), "timePicker");
@@ -107,16 +108,16 @@ public class RegistrationMedicationActivity extends FragmentActivity {
 		public Dialog onCreateDialog(Bundle savedInstanceState) {
 			// Use the current date as the default date in the picker
 			final Calendar c = Calendar.getInstance();
-	        int hour = c.get(Calendar.HOUR_OF_DAY);
-	        int minute = c.get(Calendar.MINUTE);
+			int hour = c.get(Calendar.HOUR_OF_DAY);
+			int minute = c.get(Calendar.MINUTE);
 
 
 			// Create a new instance of DatePickerDialog and return it
-	        return new TimePickerDialog(getActivity(), this, hour, minute,
-	                DateFormat.is24HourFormat(getActivity()));
+			return new TimePickerDialog(getActivity(), this, hour, minute,
+					DateFormat.is24HourFormat(getActivity()));
 
 		}
-		
+
 		public String convertToString(int hourOfDay, int minute){
 			String output = "";
 			String half = "am";
@@ -126,13 +127,13 @@ public class RegistrationMedicationActivity extends FragmentActivity {
 				half = "pm";
 			}
 			if(minute <10)
-				 zero = "0";
+				zero = "0";
 			output = Integer.toString(hourOfDay) + ":" + zero + Integer.toString(minute) 
 					+ " " + half;
 			return output;
 		}
-		
-		
+
+
 		public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
 			int last = Integer.parseInt(lastTag);
 			int [] arr = {hourOfDay,minute};
@@ -142,7 +143,7 @@ public class RegistrationMedicationActivity extends FragmentActivity {
 			lastTimeBox.setText(convertToString(hourOfDay,minute));
 		}
 	}
-	
+
 	private void sortTimes(){
 		int [] min_time={100,100};
 		int min_index = 0;
@@ -152,65 +153,84 @@ public class RegistrationMedicationActivity extends FragmentActivity {
 		for(int j=0; j< total;j++){
 			min_time[0] = 100;
 			min_time[1] = 100;
-		for(int i=0; i< alarmtimes.size();i++){
-			temp = alarmtimes.get(i);
-			if(temp[0]<min_time[0]){
-				min_time[0] = temp[0];
-				min_time[1] = temp[1];
-				min_index = i;
-			}
-			else if(temp[0]==min_time[0]) {
-				if(temp[1]<min_time[1]){
+			for(int i=0; i< alarmtimes.size();i++){
+				temp = alarmtimes.get(i);
+				if(temp[0]<min_time[0]){
 					min_time[0] = temp[0];
 					min_time[1] = temp[1];
-					min_index =i;
+					min_index = i;
 				}
+				else if(temp[0]==min_time[0]) {
+					if(temp[1]<min_time[1]){
+						min_time[0] = temp[0];
+						min_time[1] = temp[1];
+						min_index =i;
+					}
+				}
+				else
+					;
 			}
-			else
-				;
-			}
-		newList.add(alarmtimes.remove(min_index));
+			newList.add(alarmtimes.remove(min_index));
 		}
 		alarmtimes = newList;
 	}
-	
+
 	public void toNextPage(View v){
 		ArrayList<String> medicineNames = new ArrayList<String>();
 		LinearLayout medicines = (LinearLayout)findViewById(R.id.medicineBoxes);
 		for( int i = 0; i<medicines.getChildCount(); i++ )
-		    medicineNames.add(((EditText) medicines.getChildAt(i)).getText().toString());
-		sortTimes();
-		AlarmTracker.getTracker().setMedicines(medicineNames);
-		AlarmTracker.getTracker().setAlarmTime(alarmtimes);
-		AlarmTracker.getTracker().setAlarmCount(0);
-		AlarmTracker.getTracker().setMissed(0);
-		
-		Intent intent;
-		if(android.os.Build.VERSION.SDK_INT > android.os.Build.VERSION_CODES.HONEYCOMB)
-			intent = new Intent(this, RegistrationRemindersActivity.class);
-		else
-			intent = new Intent(this, RegistrationRemindersGBActivity.class);
-		
-		startActivity(intent);
-		finish();
+			medicineNames.add(((EditText) medicines.getChildAt(i)).getText().toString());
+		//Validation
+		if(medicineNames.get(0)==null || medicineNames.get(0).trim().equals("")){
+			Dialog dialog = new Dialog(this);
+			dialog.setTitle("Error");
+			TextView box = new TextView(this);
+			dialog.setContentView(box);
+			box.setText("Please enter at least one medicine.");
+			dialog.show();
+		}
+		else if(alarmtimes.size()!=medicineNames.size() || alarmtimes.get(0)==null){
+			Dialog dialog = new Dialog(this);
+			dialog.setTitle("Error");
+			TextView box = new TextView(this);
+			dialog.setContentView(box);
+			box.setText("Please enter a time to take the medicine!");
+			dialog.show();
+		}
+		else{
+			sortTimes();
+			AlarmTracker.getTracker().setMedicines(medicineNames);
+			AlarmTracker.getTracker().setAlarmTime(alarmtimes);
+			AlarmTracker.getTracker().setAlarmCount(0);
+			AlarmTracker.getTracker().setMissed(0);
+
+			Intent intent;
+			if(android.os.Build.VERSION.SDK_INT > android.os.Build.VERSION_CODES.HONEYCOMB)
+				intent = new Intent(this, RegistrationRemindersActivity.class);
+			else
+				intent = new Intent(this, RegistrationRemindersGBActivity.class);
+
+			startActivity(intent);
+			finish();
+		}
 	}
-	
+
 	public void toPrevPage(View v){
 		Intent intent = new Intent(this, RegistrationBasicInfoActivity.class);
 		startActivity(intent);
 		finish();
 	}
-	
+
 	public void addMedicineBox(View v){
 		LinearLayout medicines = (LinearLayout) findViewById(R.id.medicineBoxes);
 		EditText medicinebox = new EditText(this);
 		medicinebox.setText("Medicine Name");
 		medicineTag++;
 		medicinebox.setTag(Integer.toString(medicineTag));
-		
+
 		medicines.addView(medicinebox);
 	}
-	
+
 	public void addTimeBox(View v){
 		LinearLayout times = (LinearLayout) findViewById(R.id.timeBoxes);
 		EditText timebox = new EditText(this);

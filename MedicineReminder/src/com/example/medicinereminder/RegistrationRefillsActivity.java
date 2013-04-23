@@ -53,8 +53,6 @@ public class RegistrationRefillsActivity extends Activity {
 	}
 	
 	public void toNextPage(View v){
-		
-		//TODO Need to removed deprecated constructor for Date.
 		LinearLayout refs = (LinearLayout)findViewById(R.id.refillBoxes);
 		for( int i = 0; i<refs.getChildCount(); i++ ){
 			DatePicker dp = (DatePicker) refs.getChildAt(i);
