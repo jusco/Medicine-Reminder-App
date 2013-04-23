@@ -44,5 +44,11 @@ public class HomePageActivity extends Activity {
 		fullNameText.setText(MyGuy.getUser().fullName);
 		super.onResume();
 	}
+	
+	public void onClickPlay(View v){
+		Intent intent = new Intent(this, com.example.asteroids.Asteroids.class);
+		startActivity(intent);
+		finish();
+	}
 
 }

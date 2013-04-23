@@ -82,4 +82,14 @@
         android:layout_marginTop="5dp"
         android:text="Edit Settings" />
 
+    <Button
+        android:id="@+id/playButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/editButton"
+        android:layout_alignLeft="@+id/editButton"
+        android:layout_alignRight="@+id/editButton"
+        android:onClick="onClickPlay"
+        android:text="@string/play" />
+
 </RelativeLayout>
