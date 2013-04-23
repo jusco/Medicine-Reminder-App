@@ -2,6 +2,7 @@ package com.example.medicinereminder;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import android.os.Bundle;
 import android.annotation.SuppressLint;
@@ -14,26 +15,30 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 
 public class RegistrationRefillsActivity extends Activity {
-	ArrayList<Date> refills;
+	ArrayList<GregorianCalendar> refills;
 	private int currentTag;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_registration_refills);
 		
-		refills = new ArrayList<Date>();
+		refills = new ArrayList<GregorianCalendar>();
 		currentTag=1;
-		ArrayList<Date> refill;
+		ArrayList<GregorianCalendar> refill;
 		refill = AlarmTracker.getTracker().refills;
 		if(refill != null){
 			if(refill.size()>0){
 				DatePicker dp = (DatePicker)findViewById(R.id.EditRefill);
-				dp.updateDate(refill.get(0).getYear(), refill.get(0).getMonth(), refill.get(0).getDate());
+				GregorianCalendar ref = refill.get(0);
+				dp.updateDate(ref.get(GregorianCalendar.YEAR), ref.get(GregorianCalendar.MONTH), 
+						ref.get(GregorianCalendar.DATE));
 				View refillview = findViewById(R.id.refillBoxes);
 				for(int i = 1; i<refill.size();i++){
 					addRefillBox(findViewById(R.id.EditRefill));
 					dp = (DatePicker)refillview.findViewWithTag(Integer.toString(i+1));
-					dp.updateDate(refill.get(i).getYear(), refill.get(i).getMonth(), refill.get(i).getDate());
+					ref = refill.get(i);
+					dp.updateDate(ref.get(GregorianCalendar.YEAR), 
+							ref.get(GregorianCalendar.MONTH), ref.get(GregorianCalendar.DATE));
 				}
 				
 			}
@@ -53,7 +58,7 @@ public class RegistrationRefillsActivity extends Activity {
 		LinearLayout refs = (LinearLayout)findViewById(R.id.refillBoxes);
 		for( int i = 0; i<refs.getChildCount(); i++ ){
 			DatePicker dp = (DatePicker) refs.getChildAt(i);
-			refills.add(new Date(dp.getYear(),dp.getMonth(),dp.getDayOfMonth()));
+			refills.add(new GregorianCalendar(dp.getYear(),dp.getMonth(),dp.getDayOfMonth()));
 		}
 		AlarmTracker.getTracker().setRefill(refills);
 		Intent intent = new Intent(this, RegistrationAvatarActivity.class);

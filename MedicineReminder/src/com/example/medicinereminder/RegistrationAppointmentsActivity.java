@@ -1,12 +1,14 @@
 package com.example.medicinereminder;
 
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import java.util.Date;
 
 import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.DatePicker;
@@ -14,26 +16,30 @@ import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 
 public class RegistrationAppointmentsActivity extends Activity {
-	ArrayList<Date> appointments;
+	ArrayList<GregorianCalendar> appointments;
 	private int currentTag;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_registration_appointments);
-		appointments = new ArrayList<Date>();
+		appointments = new ArrayList<GregorianCalendar>();
 		currentTag=1;
-		ArrayList<Date> appts;
+		ArrayList<GregorianCalendar> appts;
 		appts = AlarmTracker.getTracker().appointments;
 		if(appts != null){
 			System.out.println(appts.size());
 			if(appts.size()>0){
 				DatePicker dp = (DatePicker)findViewById(R.id.EditAppointment);
-				dp.updateDate(appts.get(0).getYear(), appts.get(0).getMonth(), appts.get(0).getDate());
+				GregorianCalendar appt = appts.get(0);
+				dp.updateDate(appt.get(GregorianCalendar.YEAR), appt.get(GregorianCalendar.MONTH), 
+						appt.get(GregorianCalendar.DATE));
 				View apptview = findViewById(R.id.appointmentBoxes);
 				for(int i = 1; i<appts.size();i++){
 					addAppointmentBox(findViewById(R.id.EditAppointment));
 					dp = (DatePicker)apptview.findViewWithTag(Integer.toString(i+1));
-					dp.updateDate(appts.get(i).getYear(), appts.get(i).getMonth(), appts.get(i).getDate());
+					appt = appts.get(i);
+					dp.updateDate(appt.get(GregorianCalendar.YEAR), 
+							appt.get(GregorianCalendar.MONTH), appt.get(GregorianCalendar.DATE));
 				}
 				
 			}
@@ -62,7 +68,8 @@ public class RegistrationAppointmentsActivity extends Activity {
 		LinearLayout apps = (LinearLayout)findViewById(R.id.appointmentBoxes);
 		for( int i = 0; i<apps.getChildCount(); i++ ){
 			DatePicker dp = (DatePicker) apps.getChildAt(i);
-			appointments.add(new Date(dp.getYear(),dp.getMonth(),dp.getDayOfMonth()));
+			appointments.add(new GregorianCalendar(dp.getYear(), dp.getMonth(), dp.getDayOfMonth()));
+			Log.d("Hey Listen!",appointments.get(i).toString());
 		}
 		AlarmTracker.getTracker().setAppt(appointments);
 		

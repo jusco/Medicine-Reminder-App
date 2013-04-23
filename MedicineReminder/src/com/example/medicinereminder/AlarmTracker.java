@@ -2,6 +2,7 @@ package com.example.medicinereminder;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class AlarmTracker {
 	private static final AlarmTracker tracker = new AlarmTracker();
@@ -11,8 +12,8 @@ public class AlarmTracker {
     int alarmCount;
     ArrayList<String> medicines;
     int reminder;
-    ArrayList<Date> appointments;
-    ArrayList<Date> refills;
+    ArrayList<GregorianCalendar> appointments;
+    ArrayList<GregorianCalendar> refills;
     int missedAlarms;
     
     private AlarmTracker() {
@@ -43,11 +44,11 @@ public class AlarmTracker {
     	this.reminder = reminder;
     }
     
-    public void setAppt(ArrayList<Date> appts){
+    public void setAppt(ArrayList<GregorianCalendar> appts){
     	this.appointments = appts;
     }
     
-    public void setRefill(ArrayList<Date> refill){
+    public void setRefill(ArrayList<GregorianCalendar> refill){
     	this.refills = refill;
     }
     
