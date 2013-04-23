@@ -53,6 +53,10 @@
     <string name="title_activity_registration_appointments">RegistrationAppointmentsActivity</string>
     <string name="title_activity_registration_refills">RegistrationRefillsActivity</string>
     <string name="title_activity_registration_avatar">RegistrationAvatarActivity</string>
+    <string name="lost">You Lost!</string>
+    <string name="won">You Won!</string>
+    <string name="asteroids">Asteroids</string>
+    <string name="play">Play Asteroids!</string>
 
     <string-array name="sleep_array">
         <item>5</item>
