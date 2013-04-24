@@ -8,52 +8,64 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".RegistrationAvatarActivity" >
 
-   <LinearLayout
-            android:id="@+id/SeventhPage"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
-
-            <TextView
-                android:id="@+id/FormTitleAvatar"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:text="@string/avatartitle"
-                android:textSize="8pt" >
-            </TextView>
-
-            <LinearLayout
-                android:id="@+id/AvatarFirstRow"
+            <RelativeLayout
+                android:id="@+id/SeventhPage"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal" >
+                android:layout_height="fill_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true" >
 
-                <ImageButton
+                <TextView
+                    android:id="@+id/FormTitleAvatar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_launcher"
-                    android:tag = "1"
-                    android:onClick="selectAvatar">
-                </ImageButton>
-               
-                <!-- Add avatars here. -->
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_weight="1"
+                    android:text="@string/avatartitle"
+                    android:textSize="8pt" />
 
-            </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/linearLayout2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/FormTitleAvatar"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="22dp"
+                    android:orientation="horizontal" >
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal" >
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="selectAvatar"
+                        android:src="@drawable/man1_64x64"
+                        android:tag="1" />
+
+                    <ImageButton
+                        android:id="@+id/imageButton5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="selectAvatar"
+                        android:src="@drawable/woman1_64x64"
+                        android:tag="2" />
+
+                    <ImageButton
+                        android:id="@+id/imageButton4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="selectAvatar"
+                        android:src="@drawable/man2_64x64"
+                        android:tag="3" />
+                </LinearLayout>
 
                 <Button
                     android:id="@+id/PrevButton7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginBottom="22dp"
+                    android:layout_marginLeft="24dp"
                     android:layout_weight="1"
                     android:onClick="toPrevPage"
                     android:text="@string/prev" />
@@ -62,10 +74,76 @@
                     android:id="@+id/SubmitButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/PrevButton7"
+                    android:layout_alignBottom="@+id/PrevButton7"
+                    android:layout_marginLeft="16dp"
+                    android:layout_toRightOf="@+id/FormTitleAvatar"
                     android:layout_weight="1"
                     android:onClick="submitForm"
                     android:text="@string/submit" />
-            </LinearLayout>
-        </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/PrevButton7"
+                    android:layout_alignLeft="@+id/linearLayout2"
+                    android:layout_marginBottom="28dp"
+                    android:orientation="horizontal" >
+
+                    <ImageButton
+                        android:id="@+id/imageButton7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="selectAvatar"
+                        android:src="@drawable/woman3_64x64"
+                        android:tag="6" />
+
+                    <ImageButton
+                        android:id="@+id/imageButton1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="selectAvatar"
+                        android:src="@drawable/woman4_64x64"
+                        android:tag="8" />
+
+                    <ImageButton
+                        android:id="@+id/imageButton2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@+id/imageButton1"
+                        android:layout_centerHorizontal="true"
+                        android:onClick="selectAvatar"
+                        android:src="@drawable/man4_64x64"
+                        android:tag="7" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/linearLayout3"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="48dp"
+                    android:orientation="horizontal" >
+
+                    <ImageButton
+                        android:id="@+id/imageButton6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="selectAvatar"
+                        android:src="@drawable/woman2_64x64"
+                        android:tag="4" />
+
+                    <ImageButton
+                        android:id="@+id/imageButton3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="selectAvatar"
+                        android:src="@drawable/man3_64x64"
+                        android:tag="5" />
+                </LinearLayout>
+
+            </RelativeLayout>
 
 </RelativeLayout>

@@ -92,4 +92,12 @@
         android:onClick="onClickPlay"
         android:text="@string/play" />
 
-</RelativeLayout>
+    <ImageView
+        android:id="@+id/avatarImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/fullNameText"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/ic_launcher" />
+  
+  </RelativeLayout>

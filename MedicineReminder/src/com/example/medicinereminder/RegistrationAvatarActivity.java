@@ -14,7 +14,7 @@ public class RegistrationAvatarActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_registration_avatar);
 		this.avatar= MyGuy.getUser().avatar;
-		if(avatar > 0 && avatar < 2){
+		if(avatar > 0 && avatar < 9){
 			View images = findViewById(R.id.SeventhPage);
 			View image = images.findViewWithTag(Integer.toString(avatar));
 			image.setBackgroundColor(Color.RED);
