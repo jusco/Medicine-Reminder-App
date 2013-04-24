@@ -16,6 +16,7 @@ import android.support.v4.app.FragmentManager;
 import android.text.Editable;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -56,6 +57,10 @@ public class RegistrationBasicInfoActivity extends FragmentActivity  {
 		if(MyGuy.getUser().providerPhoneNumber != null){
 			EditText providerText = (EditText)findViewById(R.id.EditProviderPhone);
 			providerText.setText(MyGuy.getUser().providerPhoneNumber);
+		}
+		if(!MyGuy.firstTime){
+			Button submit = (Button) findViewById(R.id.NextButton);
+			submit.setText("Save");
 		}
 	}
 
@@ -110,8 +115,14 @@ public class RegistrationBasicInfoActivity extends FragmentActivity  {
 			MyGuy.getUser().setProviderPhoneNumer(provider);
 			MyGuy.getUser().setViralCount(viralLoad);
 			MyGuy.getUser().setDiagDate(date);
-			Intent intent = new Intent(this, RegistrationMedicationActivity.class);
-			startActivity(intent);
+			if(MyGuy.firstTime){
+				Intent intent = new Intent(this, RegistrationMedicationActivity.class);
+				startActivity(intent);
+			}
+			else{
+				Intent intent = new Intent(this, SettingsActivity.class);
+				startActivity(intent);
+			}
 			finish();
 		}
 	}
@@ -152,10 +163,10 @@ public class RegistrationBasicInfoActivity extends FragmentActivity  {
 			dialog.show();
 			return false;
 		}
-		
+
 		return true;
 	}
-	
+
 	private void setDateText(){
 		EditText diagDateText = (EditText)findViewById(R.id.EditDate);
 		diagDateText.setText(date);

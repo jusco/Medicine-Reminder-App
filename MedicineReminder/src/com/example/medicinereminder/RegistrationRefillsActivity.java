@@ -10,6 +10,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -21,7 +22,7 @@ public class RegistrationRefillsActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_registration_refills);
-		
+
 		refills = new ArrayList<GregorianCalendar>();
 		currentTag=1;
 		ArrayList<GregorianCalendar> refill;
@@ -40,8 +41,15 @@ public class RegistrationRefillsActivity extends Activity {
 					dp.updateDate(ref.get(GregorianCalendar.YEAR), 
 							ref.get(GregorianCalendar.MONTH), ref.get(GregorianCalendar.DATE));
 				}
-				
+
 			}
+		}
+		if(!MyGuy.firstTime){
+			Button submit = (Button) findViewById(R.id.NextButton6);
+			submit.setText("Save");
+			Button prev = (Button) findViewById(R.id.PrevButton6);
+			prev.setVisibility(View.GONE);
+			prev.setClickable(false);
 		}
 	}
 
@@ -51,7 +59,7 @@ public class RegistrationRefillsActivity extends Activity {
 		getMenuInflater().inflate(R.menu.registration_refills, menu);
 		return true;
 	}
-	
+
 	public void toNextPage(View v){
 		LinearLayout refs = (LinearLayout)findViewById(R.id.refillBoxes);
 		for( int i = 0; i<refs.getChildCount(); i++ ){
@@ -59,18 +67,24 @@ public class RegistrationRefillsActivity extends Activity {
 			refills.add(new GregorianCalendar(dp.getYear(),dp.getMonth(),dp.getDayOfMonth()));
 		}
 		AlarmTracker.getTracker().setRefill(refills);
-		Intent intent = new Intent(this, RegistrationAvatarActivity.class);
-		startActivity(intent);
+		if(MyGuy.firstTime){
+			Intent intent = new Intent(this, RegistrationAvatarActivity.class);
+			startActivity(intent);
+		}
+		else{
+			Intent intent = new Intent(this, SettingsActivity.class);
+			startActivity(intent);
+		}
 		finish();
 	}
-	
+
 
 	public void toPrevPage(View v){
 		Intent intent = new Intent(this, RegistrationAppointmentsActivity.class);
 		startActivity(intent);
 		finish();
 	}
-	
+
 	@SuppressLint("NewApi")
 	public void addRefillBox(View v){
 		LinearLayout refills = (LinearLayout) findViewById(R.id.refillBoxes);
@@ -79,6 +93,6 @@ public class RegistrationRefillsActivity extends Activity {
 		currentTag++;
 		refbox.setTag(Integer.toString(currentTag));
 		refills.addView(refbox);
-}
+	}
 
 }

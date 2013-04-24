@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.LinearLayout;
 import android.widget.NumberPicker;
@@ -41,8 +42,15 @@ public class RegistrationAppointmentsActivity extends Activity {
 					dp.updateDate(appt.get(GregorianCalendar.YEAR), 
 							appt.get(GregorianCalendar.MONTH), appt.get(GregorianCalendar.DATE));
 				}
-				
+
 			}
+		}
+		if(!MyGuy.firstTime){
+			Button submit = (Button) findViewById(R.id.NextButton5);
+			submit.setText("Save");
+			Button prev = (Button) findViewById(R.id.PrevButton5);
+			prev.setVisibility(View.GONE);
+			prev.setClickable(false);
 		}
 	}
 
@@ -52,7 +60,7 @@ public class RegistrationAppointmentsActivity extends Activity {
 		getMenuInflater().inflate(R.menu.registration_appointments, menu);
 		return true;
 	}
-	
+
 	@SuppressLint("NewApi")
 	public void addAppointmentBox(View v){
 		LinearLayout appointments = (LinearLayout) findViewById(R.id.appointmentBoxes);
@@ -62,7 +70,7 @@ public class RegistrationAppointmentsActivity extends Activity {
 		appbox.setTag(Integer.toString(currentTag));
 		appointments.addView(appbox);
 	}
-	
+
 	public void toNextPage(View v){
 		LinearLayout apps = (LinearLayout)findViewById(R.id.appointmentBoxes);
 		for( int i = 0; i<apps.getChildCount(); i++ ){
@@ -70,12 +78,17 @@ public class RegistrationAppointmentsActivity extends Activity {
 			appointments.add(new GregorianCalendar(dp.getYear(), dp.getMonth(), dp.getDayOfMonth()));
 		}
 		AlarmTracker.getTracker().setAppt(appointments);
-		
-		Intent intent = new Intent(this, RegistrationRefillsActivity.class);
-		startActivity(intent);
+		if(MyGuy.firstTime){
+			Intent intent = new Intent(this, RegistrationRefillsActivity.class);
+			startActivity(intent);
+		}
+		else{
+			Intent intent = new Intent(this, SettingsActivity.class);
+			startActivity(intent);
+		}
 		finish();
 	}
-	
+
 
 	public void toPrevPage(View v){
 		Intent intent = new Intent(this, RegistrationMessageActivity.class);

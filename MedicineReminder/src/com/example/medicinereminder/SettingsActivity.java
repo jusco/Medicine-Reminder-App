@@ -22,27 +22,27 @@ public class SettingsActivity extends Activity {
 	}
 	
 	public void editBasicInfo(View v){
-		Intent intent = new Intent(this, SettingsBasicInfoActivity.class);
+		Intent intent = new Intent(this, RegistrationBasicInfoActivity.class);
 		startActivity(intent);
 	}	
 	
 	public void editReminders(View v){
-		Intent intent = new Intent(this, SettingsRemindersActivity.class);
+		Intent intent = new Intent(this, RegistrationRemindersActivity.class);
 		startActivity(intent);
 	}	
 	
 	public void editRefills(View v){
-		Intent intent = new Intent(this, SettingsRefillsActivity.class);
+		Intent intent = new Intent(this, RegistrationRefillsActivity.class);
 		startActivity(intent);
 	}	
 	
 	public void editAppointments(View v){
-		Intent intent = new Intent(this, SettingsAppointmentsActivity.class);
+		Intent intent = new Intent(this, RegistrationAppointmentsActivity.class);
 		startActivity(intent);
 	}	
 	
 	public void editMedications(View v){
-		Intent intent = new Intent(this, SettingsMedicationActivity.class);
+		Intent intent = new Intent(this, RegistrationMedicationActivity.class);
 		startActivity(intent);
 	}	
 

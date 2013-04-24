@@ -16,6 +16,7 @@ import android.text.InputType;
 import android.text.format.DateFormat;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.NumberPicker;
@@ -68,6 +69,13 @@ public class RegistrationMedicationActivity extends FragmentActivity {
 				}
 
 			}
+		}
+		if(!MyGuy.firstTime){
+			Button submit = (Button) findViewById(R.id.NextButton2);
+			submit.setText("Save");
+			Button prev = (Button) findViewById(R.id.PrevButton2);
+			prev.setVisibility(View.GONE);
+			prev.setClickable(false);
 		}
 
 	}
@@ -203,14 +211,18 @@ public class RegistrationMedicationActivity extends FragmentActivity {
 			AlarmTracker.getTracker().setAlarmTime(alarmtimes);
 			AlarmTracker.getTracker().setAlarmCount(0);
 			AlarmTracker.getTracker().setMissed(0);
-
-			Intent intent;
-			if(android.os.Build.VERSION.SDK_INT > android.os.Build.VERSION_CODES.HONEYCOMB)
-				intent = new Intent(this, RegistrationRemindersActivity.class);
-			else
-				intent = new Intent(this, RegistrationRemindersGBActivity.class);
-
-			startActivity(intent);
+			if (MyGuy.firstTime){
+				Intent intent;
+				if(android.os.Build.VERSION.SDK_INT > android.os.Build.VERSION_CODES.HONEYCOMB)
+					intent = new Intent(this, RegistrationRemindersActivity.class);
+				else
+					intent = new Intent(this, RegistrationRemindersGBActivity.class);
+				startActivity(intent);
+			}
+			else{
+				Intent intent = new Intent(this, SettingsActivity.class);
+				startActivity(intent);
+			}
 			finish();
 		}
 	}

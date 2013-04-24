@@ -10,6 +10,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.NumberPicker;
@@ -31,6 +32,13 @@ public class RegistrationRemindersActivity extends Activity {
 		}
 		np.setWrapSelectorWheel(false);
 		np.setDisplayedValues(vals);
+		if(!MyGuy.firstTime){
+			Button submit = (Button) findViewById(R.id.NextButton3);
+			submit.setText("Save");
+			Button prev = (Button) findViewById(R.id.PrevButton3);
+			prev.setVisibility(View.GONE);
+			prev.setClickable(false);
+		}
 	}
 
 	@Override
@@ -40,17 +48,23 @@ public class RegistrationRemindersActivity extends Activity {
 		return true;
 	}
 	public void toNextPage(View v){
-		
-			int remindertime = ((NumberPicker) findViewById(R.id.np)).getValue();
+
+		int remindertime = ((NumberPicker) findViewById(R.id.np)).getValue();
 		//Don't set the alarm here either
 		//AlarmSet alarmset = new AlarmSet(this);
 		//alarmset.setAlarm(remindertime);
 		AlarmTracker.getTracker().setReminder(remindertime);
-		Intent intent = new Intent(this, RegistrationMessageActivity.class);
-		startActivity(intent);
+		if(MyGuy.firstTime){
+			Intent intent = new Intent(this, RegistrationMessageActivity.class);
+			startActivity(intent);
+		}
+		else{
+			Intent intent = new Intent(this, SettingsActivity.class);
+			startActivity(intent);
+		}
 		finish();
 	}
-	
+
 
 	public void toPrevPage(View v){
 		Intent intent = new Intent(this, RegistrationMedicationActivity.class);
