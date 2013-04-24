@@ -68,7 +68,6 @@ public class RegistrationAppointmentsActivity extends Activity {
 		for( int i = 0; i<apps.getChildCount(); i++ ){
 			DatePicker dp = (DatePicker) apps.getChildAt(i);
 			appointments.add(new GregorianCalendar(dp.getYear(), dp.getMonth(), dp.getDayOfMonth()));
-			Log.d("Hey Listen!",appointments.get(i).toString());
 		}
 		AlarmTracker.getTracker().setAppt(appointments);
 		
