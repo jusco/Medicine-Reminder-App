@@ -17,14 +17,6 @@
             android:layout_height="wrap_content" >
         </LinearLayout>
 
-        <Spinner
-            android:id="@+id/editSleep"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_alignRight="@+id/alarmMessage"
-            android:layout_alignTop="@+id/button2"
-            android:layout_weight="1" />
-
         <Button
             android:id="@+id/button2"
             android:layout_width="96dp"
@@ -36,24 +28,42 @@
             android:text="Sleep" />
 
         <Button
-            android:id="@+id/button1"
-            android:layout_width="96dp"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/button2"
-            android:layout_alignParentLeft="true"
-            android:layout_marginBottom="36dp"
-            android:layout_marginLeft="42dp"
-            android:text="Take" />
-
-        <Button
             android:id="@+id/button3"
             android:layout_width="96dp"
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/button1"
             android:layout_alignBottom="@+id/button1"
-            android:layout_alignRight="@+id/editSleep"
-            android:layout_marginRight="28dp"
+            android:layout_toRightOf="@+id/button1"
             android:onClick="onIgnoreButtonClick"
             android:text="Ignore" />
+
+        <Button
+            android:id="@id/button4"
+            android:layout_width="96dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/button3"
+            android:layout_alignBottom="@+id/button3"
+            android:layout_toRightOf="@+id/button3"
+            android:onClick="onPillCamButtonClick"
+            android:text="Pill Cam" />
+
+        <Spinner
+            android:id="@+id/editSleep"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/button2"
+            android:layout_alignRight="@+id/alarmMessage"
+            android:layout_marginRight="40dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="96dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/editSleep"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="22dp"
+            android:text="Take" />
 
 </RelativeLayout>

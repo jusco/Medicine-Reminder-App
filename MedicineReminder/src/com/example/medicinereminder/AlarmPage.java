@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.text.format.Time;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -21,6 +22,7 @@ import android.widget.Toast;
 public class AlarmPage extends Activity {
 	AlarmSet alarmSet;
 	String time;
+	String photo;
 	
 	
 	@Override
@@ -75,9 +77,33 @@ public class AlarmPage extends Activity {
                     Toast.LENGTH_LONG).show();
 		}
 		AlarmTracker.getTracker().setMissed(count);
+		Time now = new Time();
+		now.setToNow();
+		AlarmTracker.getTracker().addRecord(now, "No");
 		finish();
 	}
 	
+	public void onTakeButtonClick(View view){
+		AlarmTracker.getTracker().missedAlarms = 0;
+		Time now = new Time();
+		now.setToNow();
+		AlarmTracker.getTracker().addRecord(now, "Yes");
+	}
+	
+	public void onPillCamButtonClick(View view){
+		Time now = new Time();
+		now.setToNow();
+		AlarmTracker.getTracker().addRecord(now, "Cam");
+		Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
+		startActivityForResult(intent, 0);
+		finish();
+	}
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+	  if (resultCode == Activity.RESULT_OK && requestCode == 0) {
+	    photo = data.toUri(0);
+	  }
+	}
 
 }
 

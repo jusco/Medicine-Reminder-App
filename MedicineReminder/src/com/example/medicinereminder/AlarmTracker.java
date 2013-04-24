@@ -3,6 +3,9 @@ package com.example.medicinereminder;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
+
+import android.text.format.Time;
 
 public class AlarmTracker {
 	private static final AlarmTracker tracker = new AlarmTracker();
@@ -15,9 +18,10 @@ public class AlarmTracker {
     ArrayList<GregorianCalendar> appointments;
     ArrayList<GregorianCalendar> refills;
     int missedAlarms;
+    HashMap<Time,String> pillRecord;
     
     private AlarmTracker() {
-    	
+    	pillRecord = new HashMap<Time,String>();
     }
     
     public static AlarmTracker getTracker() {
@@ -54,6 +58,14 @@ public class AlarmTracker {
     
     public void setMissed(int missed){
     	this.missedAlarms = missed;
+    }
+    
+    public void addRecord(Time date, String taken){
+    	pillRecord.put(date, taken);
+    }
+    
+    public HashMap<Time,String> getRecord(){
+    	return pillRecord;
     }
     
 }
