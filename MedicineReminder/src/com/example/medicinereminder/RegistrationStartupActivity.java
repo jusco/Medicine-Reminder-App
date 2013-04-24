@@ -22,7 +22,12 @@ public class RegistrationStartupActivity extends Activity {
 	}
 	
 	public void onStart(View v){
-		Intent intent = new Intent(this, RegistrationBasicInfoActivity.class);
+		Intent intent;
+		if (MyGuy.firstTime) {
+			intent = new Intent(this, RegistrationBasicInfoActivity.class);
+		} else {
+			intent = new Intent(this, HomePageActivity.class);
+		}
 		startActivity(intent);
 		finish();
 	}

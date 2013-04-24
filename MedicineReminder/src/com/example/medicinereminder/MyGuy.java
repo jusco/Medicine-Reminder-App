@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 public class MyGuy  {
     private static final MyGuy user = new MyGuy();
+    public static boolean firstTime = true;
     
     String firstName;
     String lastName;
@@ -57,6 +58,7 @@ public class MyGuy  {
     
     public void setAvatar(int avatar){
     	this.avatar = avatar;
+    	MyGuy.firstTime = false;
     }
     
    
