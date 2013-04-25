@@ -64,7 +64,19 @@ public class RegistrationRefillsActivity extends Activity {
 		LinearLayout refs = (LinearLayout)findViewById(R.id.refillBoxes);
 		for( int i = 0; i<refs.getChildCount(); i++ ){
 			DatePicker dp = (DatePicker) refs.getChildAt(i);
-			refills.add(new GregorianCalendar(dp.getYear(),dp.getMonth(),dp.getDayOfMonth()));
+			int year = dp.getYear();
+			int month = dp.getMonth();
+			int day = dp.getDayOfMonth();
+			GregorianCalendar cal = new GregorianCalendar(year,month,day);
+			refills.add(cal);
+			Intent intent = new Intent(Intent.ACTION_EDIT);
+			intent.setType("vnd.android.cursor.item/event");
+			intent.putExtra("beginTime", cal.getTimeInMillis());
+			intent.putExtra("allDay", true);
+			intent.putExtra("endTime", cal.getTimeInMillis()+60*60*1000);
+			intent.putExtra("title", "Get Refill!");
+			startActivity(intent);
+			
 		}
 		AlarmTracker.getTracker().setRefill(refills);
 		if(MyGuy.firstTime){
