@@ -8,118 +8,130 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".RegistrationMedicationActivity" >
 
-     <ScrollView
-            android:id="@+id/ScrollView02"
-            android:layout_width="wrap_content"
+    <ScrollView
+        android:id="@+id/ScrollView02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical" >
+
+        <LinearLayout
+            android:id="@+id/SecondPage"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:scrollbars="vertical" >
+            android:orientation="vertical" >
 
-            <LinearLayout
-                android:id="@+id/SecondPage"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" >
-
-                <TextView
-                    android:id="@+id/FormTitleMedicine"
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_weight="1"
-                    android:text="@string/medicinetitle"
-                    android:textSize="8pt" >
-                </TextView>
-
-                <LinearLayout
-                    android:id="@+id/medicineBoxes"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:orientation="vertical" >
-
-                    <EditText
-                        android:id="@+id/EditMedicine"
-                        android:layout_width="fill_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:tag="1"
-                        android:hint="@string/medicinename"
-                        android:inputType="text" >
-                    </EditText>
-                </LinearLayout>
-                
-                <Button
-                    android:id="@+id/AddButton"
-                    android:layout_width="fill_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:onClick="addMedicineBox"
-                    android:text="@string/addmedicine" />
-
-                <TextView
-                    android:id="@+id/FormTitleTime"
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_weight="1"
-                    android:text="@string/medicinetimetitle"
-                    android:textSize="8pt" >
-                </TextView>
-
-                <LinearLayout
-                    android:id="@+id/timeBoxes"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:orientation="vertical" >
-
-               <EditText
-                android:id="@+id/EditTime"
+            <TextView
+                android:id="@+id/FormTitleMedicine"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
                 android:layout_weight="1"
-                android:focusableInTouchMode="false"
-                android:inputType="time"
-                android:tag="1"
-                android:onClick="showTimePickerDialog"
-                android:text="@string/medicinetime" >
-            </EditText>
-                </LinearLayout>
+                android:text="@string/medicinetitle"
+                android:textSize="8pt" >
+            </TextView>
+
+            <LinearLayout
+                android:id="@+id/medicineBoxes"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical" >
+
+                <EditText
+                    android:id="@+id/EditMedicine"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:hint="@string/medicinename"
+                    android:inputType="text"
+                    android:tag="1" >
+                </EditText>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" >
+
+                <Button
+                    android:id="@+id/AddButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_centerInParent="true"
+                    android:onClick="addMedicineBox"
+                    android:text="@string/addmedicine" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/FormTitleTime"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:text="@string/medicinetimetitle"
+                android:textSize="8pt" >
+            </TextView>
+
+            <LinearLayout
+                android:id="@+id/timeBoxes"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical" >
+
+                <EditText
+                    android:id="@+id/EditTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:focusableInTouchMode="false"
+                    android:inputType="time"
+                    android:onClick="showTimePickerDialog"
+                    android:tag="1"
+                    android:text="@string/medicinetime" >
+                </EditText>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" >
 
                 <Button
                     android:id="@+id/AddButton2"
-                    android:layout_width="fill_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="0dp"
-                    android:layout_weight="1"
+                    android:layout_centerInParent="true"
                     android:onClick="addTimeBox"
                     android:text="@string/addmedicine" />
+            </RelativeLayout>
 
-                <LinearLayout
-                    android:layout_width="fill_parent"
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/PrevButton2"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal" >
+                    android:layout_weight="1"
+                    android:onClick="toPrevPage"
+                    android:text="@string/prev" />
 
-                    <Button
-                        android:id="@+id/PrevButton2"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:onClick="toPrevPage"
-                        android:text="@string/prev" />
-
-                    <Button
-                        android:id="@+id/NextButton2"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:onClick="toNextPage"
-                        android:text="@string/next" />
-                </LinearLayout>
+                <Button
+                    android:id="@+id/NextButton2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="toNextPage"
+                    android:text="@string/next" />
             </LinearLayout>
-        </ScrollView>
+        </LinearLayout>
+    </ScrollView>
 
 </RelativeLayout>
