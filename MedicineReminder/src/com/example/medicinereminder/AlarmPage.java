@@ -88,6 +88,7 @@ public class AlarmPage extends Activity {
 		Time now = new Time();
 		now.setToNow();
 		AlarmTracker.getTracker().addRecord(now, "Yes");
+		finish();
 	}
 	
 	public void onPillCamButtonClick(View view){
