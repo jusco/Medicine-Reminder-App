@@ -93,7 +93,7 @@ public class HomePageActivity extends Activity {
 	}
 	
 	public void onClickPlay(View v){
-		Intent intent = new Intent(this, com.example.asteroids.Asteroids.class);
+		Intent intent = new Intent(this, StreakActivity.class);
 		startActivity(intent);
 	}
 

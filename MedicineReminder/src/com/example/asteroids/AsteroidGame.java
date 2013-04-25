@@ -3,6 +3,8 @@ package com.example.asteroids;
 import java.util.ArrayList;
 import java.util.Random;
 
+import com.example.medicinereminder.AlarmTracker;
+
 
 import android.content.Context;
 import android.widget.Toast;
@@ -29,6 +31,7 @@ public class AsteroidGame {
 	public static int standardxsize;
 	public static int standardysize;
 	
+	public int tickmarker;
 	//Manages firing rate
 	private int ticks;
 	
@@ -52,9 +55,31 @@ public class AsteroidGame {
 		asteroidCount = 8;
 		
 		ticks = 0;
+		setTickMarker();
 	}
 	
-	
+	private void setTickMarker(){
+		int streak = AlarmTracker.getTracker().streak;
+		switch(streak){
+		case 1:
+			tickmarker = 50;
+			break;
+		case 3:
+			tickmarker = 33;
+			break;
+		case 6:
+			tickmarker = 25;
+			break;
+		case 9:
+			tickmarker = 20;
+			break;
+		case 15:
+			tickmarker = 16;
+		default:
+			tickmarker=100;
+			break;
+		}
+	}
 	
 	
 	private int randomInteger(int start, int end, Random random){
@@ -231,7 +256,7 @@ public class AsteroidGame {
 	}
 	
 	public void updateInputs(){
-		if(firing && ticks > 100){
+		if(firing && ticks > tickmarker){
 			ticks=0;
 			createBullet();
 		}
@@ -249,13 +274,16 @@ public class AsteroidGame {
 	}
 	
 	public void handleLost(){
-		if(!inPlay)
+		if(!inPlay){
 			win = false;
+			setHighScore();
+		}
 	}
 	
 	public void checkWon(){
 		if(asteroidCount == 0 ){
 			inPlay = false;
+			setHighScore();
 			win = true;
 		}
 	}
@@ -272,6 +300,11 @@ public class AsteroidGame {
 			}
 		}
 		
+	}
+	
+	public void setHighScore(){
+		if(score > AlarmTracker.getTracker().highscore)
+			AlarmTracker.getTracker().setHighScore(score);
 	}
 	
 	boolean runGame(){
