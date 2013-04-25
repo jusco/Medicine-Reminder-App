@@ -1,12 +1,15 @@
 package com.example.medicinereminder;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.format.Time;
 import android.view.View;
@@ -23,23 +26,23 @@ public class AlarmPage extends Activity {
 	AlarmSet alarmSet;
 	String time;
 	String photo;
-	
-	
+
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.alarm_page);
-		
+
 		TextView out = (TextView)findViewById(R.id.alarmMessage);
 		out.append(AlarmTracker.getTracker().alarmMessage);
 
 		Spinner spinner = (Spinner) findViewById(R.id.editSleep);
-// 		Create an ArrayAdapter using the string array and a default spinner layout
+		// 		Create an ArrayAdapter using the string array and a default spinner layout
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
 				R.array.sleep_array, android.R.layout.simple_spinner_item);
-// 		Specify the layout to use when the list of choices appears
+		// 		Specify the layout to use when the list of choices appears
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-// 		Apply the adapter to the spinner
+		// 		Apply the adapter to the spinner
 		spinner.setAdapter(adapter);
 
 		spinner.setOnItemSelectedListener((OnItemSelectedListener) new SpinnerActivity());
@@ -60,7 +63,7 @@ public class AlarmPage extends Activity {
 		public void onNothingSelected(AdapterView<?> parent) {
 			time = "5";
 		}
-}
+	}
 
 	public void onSleepButtonClick(View view){
 		//EditText times = (EditText)findViewById(R.id.editSleep);
@@ -68,21 +71,36 @@ public class AlarmPage extends Activity {
 		alarmSet.setSleep(time);
 		finish();
 	}
-	
+
 	public void onIgnoreButtonClick(View view){
-		int count =AlarmTracker.getTracker().missedAlarms;
-		count ++;
-		if (count>3){
-			Toast.makeText(this, R.string.okmessage,
-                    Toast.LENGTH_LONG).show();
+		AlarmTracker.getTracker().missedAlarms++;
+		if (AlarmTracker.getTracker().missedAlarms>3){
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			builder.setTitle("Are you OK?");
+			builder.setMessage("You haven't taken your medication in a few days. Are you ok?");
+			builder.setPositiveButton("Call provider", new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					String num = MyGuy.getUser().providerPhoneNumber;
+					Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + num));
+					startActivity(intent);
+					dialog.dismiss();
+				}
+			});
+			builder.setNegativeButton("I'm fine", new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					dialog.dismiss();
+				}
+			});
+			builder.create().show();
 		}
-		AlarmTracker.getTracker().setMissed(count);
 		Time now = new Time();
 		now.setToNow();
 		AlarmTracker.getTracker().addRecord(now, "No");
 		finish();
 	}
-	
+
 	public void onTakeButtonClick(View view){
 		AlarmTracker.getTracker().missedAlarms = 0;
 		Time now = new Time();
@@ -90,7 +108,7 @@ public class AlarmPage extends Activity {
 		AlarmTracker.getTracker().addRecord(now, "Yes");
 		finish();
 	}
-	
+
 	public void onPillCamButtonClick(View view){
 		Time now = new Time();
 		now.setToNow();
@@ -101,9 +119,9 @@ public class AlarmPage extends Activity {
 	}
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
-	  if (resultCode == Activity.RESULT_OK && requestCode == 0) {
-	    photo = data.toUri(0);
-	  }
+		if (resultCode == Activity.RESULT_OK && requestCode == 0) {
+			photo = data.toUri(0);
+		}
 	}
 
 }
