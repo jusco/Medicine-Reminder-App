@@ -19,6 +19,7 @@ public class AlarmTracker {
     ArrayList<GregorianCalendar> refills;
     int missedAlarms;
     HashMap<Time,String> pillRecord;
+    int minutesSlept;
     
     private AlarmTracker() {
     	pillRecord = new HashMap<Time,String>();

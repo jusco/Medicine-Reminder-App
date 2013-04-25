@@ -67,13 +67,22 @@ public class AlarmPage extends Activity {
 
 	public void onSleepButtonClick(View view){
 		//EditText times = (EditText)findViewById(R.id.editSleep);
-		alarmSet = new AlarmSet(this);
-		alarmSet.setSleep(time);
-		finish();
+		AlarmTracker.getTracker().minutesSlept+=Integer.parseInt(time);
+		if(AlarmTracker.getTracker().minutesSlept<=65){
+			alarmSet = new AlarmSet(this);
+			alarmSet.setSleep(time);
+			finish();
+		}
+		else{
+			int duration = Toast.LENGTH_LONG;
+			Toast.makeText(this, "Alarm canceled! Sleeping for more than an hour counts as ignoring!", duration).show();
+			onIgnoreButtonClick(view);
+		}
 	}
 
 	public void onIgnoreButtonClick(View view){
 		AlarmTracker.getTracker().missedAlarms++;
+		AlarmTracker.getTracker().minutesSlept=0;
 		Time now = new Time();
 		now.setToNow();
 		AlarmTracker.getTracker().addRecord(now, "No");
@@ -106,6 +115,7 @@ public class AlarmPage extends Activity {
 	}
 
 	public void onTakeButtonClick(View view){
+		AlarmTracker.getTracker().minutesSlept=0;
 		AlarmTracker.getTracker().missedAlarms = 0;
 		Time now = new Time();
 		now.setToNow();
@@ -114,6 +124,7 @@ public class AlarmPage extends Activity {
 	}
 
 	public void onPillCamButtonClick(View view){
+		AlarmTracker.getTracker().minutesSlept=0;
 		Time now = new Time();
 		now.setToNow();
 		AlarmTracker.getTracker().addRecord(now, "Cam");
