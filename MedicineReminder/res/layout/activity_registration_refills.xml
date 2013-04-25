@@ -46,8 +46,8 @@
 
             <Button
                 android:id="@+id/AddRefill"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:onClick="addRefillBox"
                 android:text="@string/addmedicine" />
