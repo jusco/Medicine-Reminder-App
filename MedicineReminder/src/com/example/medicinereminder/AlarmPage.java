@@ -74,6 +74,9 @@ public class AlarmPage extends Activity {
 
 	public void onIgnoreButtonClick(View view){
 		AlarmTracker.getTracker().missedAlarms++;
+		Time now = new Time();
+		now.setToNow();
+		AlarmTracker.getTracker().addRecord(now, "No");
 		if (AlarmTracker.getTracker().missedAlarms>3){
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);
 			builder.setTitle("Are you OK?");
@@ -85,20 +88,21 @@ public class AlarmPage extends Activity {
 					Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + num));
 					startActivity(intent);
 					dialog.dismiss();
+					finish();
 				}
 			});
 			builder.setNegativeButton("I'm fine", new DialogInterface.OnClickListener() {
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
 					dialog.dismiss();
+					finish();
 				}
 			});
 			builder.create().show();
 		}
-		Time now = new Time();
-		now.setToNow();
-		AlarmTracker.getTracker().addRecord(now, "No");
-		finish();
+		else{
+			finish();
+		}
 	}
 
 	public void onTakeButtonClick(View view){
