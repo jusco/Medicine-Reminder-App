@@ -89,7 +89,7 @@ public class RegistrationRefillsActivity extends Activity {
 	public void addRefillBox(View v){
 		LinearLayout refills = (LinearLayout) findViewById(R.id.refillBoxes);
 		DatePicker refbox = new DatePicker(this);
-		//refbox.setCalendarViewShown(false);
+		refbox.setCalendarViewShown(false);
 		currentTag++;
 		refbox.setTag(Integer.toString(currentTag));
 		refills.addView(refbox);
