@@ -1,6 +1,7 @@
 package com.example.medicinereminder;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Date;
 
@@ -76,7 +77,18 @@ public class RegistrationAppointmentsActivity extends Activity {
 		LinearLayout apps = (LinearLayout)findViewById(R.id.appointmentBoxes);
 		for( int i = 0; i<apps.getChildCount(); i++ ){
 			DatePicker dp = (DatePicker) apps.getChildAt(i);
-			appointments.add(new GregorianCalendar(dp.getYear(), dp.getMonth(), dp.getDayOfMonth()));
+			int year = dp.getYear();
+			int month = dp.getMonth();
+			int day = dp.getDayOfMonth();
+			GregorianCalendar cal = new GregorianCalendar(year,month,day);
+			appointments.add(cal);
+			Intent intent = new Intent(Intent.ACTION_EDIT);
+			intent.setType("vnd.android.cursor.item/event");
+			intent.putExtra("beginTime", cal.getTimeInMillis());
+			intent.putExtra("allDay", true);
+			intent.putExtra("endTime", cal.getTimeInMillis()+60*60*1000);
+			intent.putExtra("title", "Appointment!");
+			startActivity(intent);
 		}
 		AlarmTracker.getTracker().setAppt(appointments);
 		if(MyGuy.firstTime){
