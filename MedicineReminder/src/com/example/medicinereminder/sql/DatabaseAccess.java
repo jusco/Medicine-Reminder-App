@@ -15,25 +15,25 @@ public class DatabaseAccess {
 	private String[] allColumnsUser = { MySQLiteHelper.COLUMN_ID, 
 			MySQLiteHelper.COLUMN_NAME, MySQLiteHelper.COLUMN_LAST_NAME,
 			MySQLiteHelper.COLUMN_AGE,
-			MySQLiteHelper.COLUMN_VIRAL, MySQLiteHelper.COLUMN_CD4,
+			MySQLiteHelper.COLUMN_VIRAL,
 			MySQLiteHelper.COLUMN_DIAG_DAY, MySQLiteHelper.COLUMN_DIAG_MONTH,
 			MySQLiteHelper.COLUMN_DIAG_YEAR,
 			MySQLiteHelper.COLUMN_DOCTOR, MySQLiteHelper.COLUMN_DOCTOR_NO};
 	private String[] allColumnsMedicine = { MySQLiteHelper.COLUMN_MEDICINE_ID, 
-			MySQLiteHelper.COLUMN_MEDICINE, MySQLiteHelper.COLUMN_DOSAGE };
+			MySQLiteHelper.COLUMN_MEDICINE};
 	private String[] allColumnsSchedule = { MySQLiteHelper.COLUMN_SCHEDULE_ID, 
-			MySQLiteHelper.COLUMN_MEDICINE_ID, MySQLiteHelper.COLUMN_MINUTE,
+			MySQLiteHelper.COLUMN_MINUTE,
 			MySQLiteHelper.COLUMN_HOUR, MySQLiteHelper.COLUMN_DAY,
 			MySQLiteHelper.COLUMN_MONTH, MySQLiteHelper.COLUMN_YEAR};
-	private String[] allColumnsAppt = { MySQLiteHelper.COLUMN_APPT_ID, 
-			MySQLiteHelper.COLUMN_CLINIC, MySQLiteHelper.COLUMN_MINUTE,
+	private String[] allColumnsAppt = { MySQLiteHelper.COLUMN_APPT_ID,
+			MySQLiteHelper.COLUMN_MINUTE,
 			MySQLiteHelper.COLUMN_HOUR, MySQLiteHelper.COLUMN_DAY,
 			MySQLiteHelper.COLUMN_MONTH, MySQLiteHelper.COLUMN_YEAR};
 	private String[] allColumnsLog = {MySQLiteHelper.COLUMN_MESSAGE_ID,
 			MySQLiteHelper.COLUMN_MESSAGE,
 			MySQLiteHelper.COLUMN_TIME};
 	private String[] allColumnsRefill = {MySQLiteHelper.COLUMN_REFILL_ID,
-			MySQLiteHelper.COLUMN_MEDICINE_ID, MySQLiteHelper.COLUMN_MINUTE,
+			MySQLiteHelper.COLUMN_MINUTE,
 			MySQLiteHelper.COLUMN_HOUR, MySQLiteHelper.COLUMN_DAY,
 			MySQLiteHelper.COLUMN_MONTH, MySQLiteHelper.COLUMN_YEAR};		
 	
@@ -53,11 +53,11 @@ public class DatabaseAccess {
 	
 	
 	public CursorHolder addUserData(String name, String last_name,int age,
-			int viral_load, int cd4, int diag_day, int diag_month,
+			int viral_load, int diag_day, int diag_month,
 			int diag_year, String doctor,
 			String doctor_number){
 		if (name==null || last_name==null || age<0 || age>120 || viral_load<0 ||
-			cd4<0 || diag_day<1 || diag_day >31 || diag_month<1 || diag_month > 12 ||
+			diag_day<1 || diag_day >31 || diag_month<1 || diag_month > 12 ||
 			diag_year<1910 ||diag_year > 2013 || doctor ==null || doctor_number==null)
 			return null;
 		ContentValues values = new ContentValues();
@@ -65,7 +65,6 @@ public class DatabaseAccess {
 		values.put(MySQLiteHelper.COLUMN_LAST_NAME, last_name);
 		values.put(MySQLiteHelper.COLUMN_AGE, age);
 		values.put(MySQLiteHelper.COLUMN_VIRAL, viral_load);
-		values.put(MySQLiteHelper.COLUMN_CD4, cd4);
 		values.put(MySQLiteHelper.COLUMN_DIAG_DAY, diag_day);
 		values.put(MySQLiteHelper.COLUMN_DIAG_MONTH, diag_month);
 		values.put(MySQLiteHelper.COLUMN_DIAG_YEAR, diag_year);
@@ -118,12 +117,11 @@ public class DatabaseAccess {
 	}
 	
 	
-	public CursorHolder addMedicine(String medicine, int dosage){
-		if(medicine==null|| dosage < 0 )
+	public CursorHolder addMedicine(String medicine){
+		if(medicine==null)
 			return null;
 		ContentValues values = new ContentValues();
 		values.put(MySQLiteHelper.COLUMN_MEDICINE, medicine);
-		values.put(MySQLiteHelper.COLUMN_DOSAGE, dosage);
 		long insertId = database.insert(MySQLiteHelper.TABLE_MEDICINE, null,
 				values);
 		int insert = ((Long)insertId).intValue();
@@ -170,14 +168,13 @@ public class DatabaseAccess {
 		return meds;
 	}
 	
-	public CursorHolder addSchedule(int medicine_id, int minute,
+	public CursorHolder addSchedule(int minute,
 			int hour, int day, int month, int year){
-		if(medicine_id<1 || minute <0 || minute > 59 || hour < 1 ||
+		if( minute <0 || minute > 59 || hour < 1 ||
 				hour > 12 || day < 1 || day > 31 || month < 1 ||
 				month > 12 || year < 1910 || year > 2013)
 			return null;
 		ContentValues values = new ContentValues();
-		values.put(MySQLiteHelper.COLUMN_MEDICINE_ID, medicine_id);
 		values.put(MySQLiteHelper.COLUMN_MINUTE, minute);
 		values.put(MySQLiteHelper.COLUMN_HOUR, hour);
 		values.put(MySQLiteHelper.COLUMN_DAY, day);
@@ -229,14 +226,13 @@ public class DatabaseAccess {
 		return scheds;
 	}
 	
-	public CursorHolder addAppt(String clinic, int minute,
+	public CursorHolder addAppt(int minute,
 			int hour, int day, int month, int year){
-		if(clinic==null || minute <0 || minute > 59 || hour < 1 ||
+		if(minute <0 || minute > 59 || hour < 1 ||
 				hour > 12 || day < 1 || day > 31 || month < 1 ||
 				month > 12 || year < 1910 || year > 2013)
 			return null;
 		ContentValues values = new ContentValues();
-		values.put(MySQLiteHelper.COLUMN_CLINIC, clinic);
 		values.put(MySQLiteHelper.COLUMN_MINUTE, minute);
 		values.put(MySQLiteHelper.COLUMN_HOUR, hour);
 		values.put(MySQLiteHelper.COLUMN_DAY, day);
@@ -332,14 +328,13 @@ public class DatabaseAccess {
 		return logs;
 	}
 	
-	public CursorHolder addRefill(int medicine_id, int minute,
+	public CursorHolder addRefill(int minute,
 			int hour, int day, int month, int year){
-		if(medicine_id<1 || minute <0 || minute > 59 || hour < 1 ||
+		if(minute <0 || minute > 59 || hour < 1 ||
 				hour > 12 || day < 1 || day > 31 || month < 1 ||
 				month > 12 || year < 1910 || year > 2013)
 			return null;
 		ContentValues values = new ContentValues();
-		values.put(MySQLiteHelper.COLUMN_MEDICINE_ID, medicine_id);
 		values.put(MySQLiteHelper.COLUMN_MINUTE, minute);
 		values.put(MySQLiteHelper.COLUMN_HOUR, hour);
 		values.put(MySQLiteHelper.COLUMN_DAY, day);
@@ -398,40 +393,38 @@ public class DatabaseAccess {
 			System.out.println("Id: " + item.getInt(0) + " Name: " +
 					item.getString(1) + " Last: " + item.getString(2) +
 					" Age: " + item.getInt(3) + " Viral Load: " + 
-					item.getInt(4) + " CD4 Count : " + item.getInt(5) +
-					" Diag Day " + item.getInt(6) + " Diag Month " +
-					item.getInt(7) + " Diag Year " + item.getInt(8) +
-					" Provider: " + item.getString(9) + " Provider No.: " +
-					item.getString(10));
+					item.getInt(4) + 
+					" Diag Day " + item.getInt(5) + " Diag Month " +
+					item.getInt(6) + " Diag Year " + item.getInt(7) +
+					" Provider: " + item.getString(8) + " Provider No.: " +
+					item.getString(9));
 		}
 		temp_list = getAllMedicine();
 		for (CursorHolder item : temp_list){
 			System.out.println("Medicine Id: " + item.getInt(0) + " Medicine: " +
-					item.getString(1) + " Dosage: " + item.getInt(2));
+					item.getString(1));
 		}
 		temp_list = getAllSchedules();
 		for (CursorHolder item : temp_list){
-			System.out.println("Schedule Id: " + item.getInt(0) + 
-					"Medicine Id: " + item.getInt(1) + " Minute: " +
-					item.getInt(2) + " Hour: " + item.getInt(3) +
-					" Day " + item.getInt(4) + " Month: " + item.getInt(5) +
-					" Year: " + item.getInt(6));
+			System.out.println("Schedule Id: " + item.getInt(0) + " Minute: " +
+					item.getInt(1) + " Hour: " + item.getInt(2) +
+					" Day " + item.getInt(3) + " Month: " + item.getInt(4) +
+					" Year: " + item.getInt(5));
 		}
 		temp_list = getAllAppts();
 		for (CursorHolder item : temp_list){
-			System.out.println("Appointment Id: " + item.getInt(0) + 
-					"Clinic: " + item.getString(1) + " Minute: " +
-					item.getInt(2) + " Hour: " + item.getInt(3) +
-					" Day " + item.getInt(4) + " Month: " + item.getInt(5) +
-					" Year: " + item.getInt(6));
+			System.out.println("Appointment Id: " + item.getInt(0) +
+					" Minute: " +
+					item.getInt(1) + " Hour: " + item.getInt(2) +
+					" Day " + item.getInt(3) + " Month: " + item.getInt(4) +
+					" Year: " + item.getInt(5));
 		}
 		temp_list = getAllRefills();
 		for (CursorHolder item : temp_list){
-			System.out.println("Refill Id: " + item.getInt(0) + 
-					"Medicine Id: " + item.getInt(1) + " Minute: " +
-					item.getInt(2) + " Hour: " + item.getInt(3) +
-					" Day " + item.getInt(4) + " Month: " + item.getInt(5) +
-					" Year: " + item.getInt(6));
+			System.out.println("Refill Id: " + item.getInt(0) + " Minute: " +
+					item.getInt(1) + " Hour: " + item.getInt(2) +
+					" Day " + item.getInt(3) + " Month: " + item.getInt(4) +
+					" Year: " + item.getInt(5));
 		}
 		temp_list = getAllLogs();
 		for (CursorHolder item : temp_list){
@@ -461,9 +454,8 @@ public class DatabaseAccess {
 	    data.add(cursor.getInt(5));
 	    data.add(cursor.getInt(6));
 	    data.add(cursor.getInt(7));
-	    data.add(cursor.getInt(8));
+	    data.add(cursor.getString(8));
 	    data.add(cursor.getString(9));
-	    data.add(cursor.getString(10));
 	    return data;
 	}
 	  
@@ -471,7 +463,6 @@ public class DatabaseAccess {
 		CursorHolder data = new CursorHolder();
 		data.add(cursor.getInt(0));
 		data.add(cursor.getString(1));
-		data.add(cursor.getInt(2));
 		return data;
 	}
 	  
@@ -483,19 +474,17 @@ public class DatabaseAccess {
 		data.add(cursor.getInt(3));
 		data.add(cursor.getInt(4));
 		data.add(cursor.getInt(5));
-		data.add(cursor.getInt(6));
 		return data;
 	}
 	
 	private CursorHolder cursorToAppt(Cursor cursor){
 		CursorHolder data = new CursorHolder();
-		data.add(cursor.getInt(0));
-		data.add(cursor.getString(1));	
+		data.add(cursor.getInt(0));	
+		data.add(cursor.getInt(1));
 		data.add(cursor.getInt(2));
 		data.add(cursor.getInt(3));
 		data.add(cursor.getInt(4));
 		data.add(cursor.getInt(5));
-		data.add(cursor.getInt(6));
 		return data;
 	}
 	

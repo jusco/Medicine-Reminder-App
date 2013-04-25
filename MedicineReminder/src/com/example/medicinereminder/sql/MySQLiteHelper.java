@@ -35,7 +35,6 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 	public static final String TABLE_MEDICINE = "medicine";
 	public static final String COLUMN_MEDICINE_ID = "medicine_id";
 	public static final String COLUMN_MEDICINE = "medicine";
-	public static final String COLUMN_DOSAGE = "dosage";
 
 	
 	public static final String TABLE_SCHEDULE = "schedule";
@@ -73,7 +72,6 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 			+ " text not null, " + COLUMN_LAST_NAME 
 			+ " text not null, " + COLUMN_AGE 
 			+ " integer, " + COLUMN_VIRAL
-			+ " integer, " + COLUMN_CD4
 			+ " integer, " + COLUMN_DIAG_DAY
 			+ " integer, " + COLUMN_DIAG_MONTH
 			+ " integer, " + COLUMN_DIAG_YEAR
@@ -84,13 +82,11 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 	private static final String DATABASE_CREATE_MEDICINE = "create table "
 			+ TABLE_MEDICINE + "(" + COLUMN_MEDICINE_ID
 			+ " integer primary key autoincrement, " + COLUMN_MEDICINE 
-			+ " text not null, " + COLUMN_DOSAGE
-			+ " integer);";
+			+ " text not null);";
 	
 	private static final String DATABASE_CREATE_SCHEDULE = "create table "
 			+ TABLE_SCHEDULE + "(" + COLUMN_SCHEDULE_ID
-			+ " integer primary key autoincrement, " + COLUMN_MEDICINE_ID
-			+ " integer REFERENCES " + TABLE_MEDICINE +", " + COLUMN_MINUTE
+			+ " integer primary key autoincrement, " + COLUMN_MINUTE
 			+ " integer, " + COLUMN_HOUR 
 			+ " integer, " + COLUMN_DAY 
 			+ " integer, " + COLUMN_MONTH
@@ -99,8 +95,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 	
 	private static final String DATABASE_CREATE_APPT = "create table "
 			+ TABLE_APPT + "(" + COLUMN_APPT_ID
-			+ " integer primary key autoincrement, " + COLUMN_CLINIC
-			+ " text not null, " + COLUMN_MINUTE
+			+ " integer primary key autoincrement, " + COLUMN_MINUTE
 			+ " integer, " + COLUMN_HOUR 
 			+ " integer, " + COLUMN_DAY 
 			+ " integer, " + COLUMN_MONTH
@@ -109,8 +104,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 	
 	private static final String DATABASE_CREATE_REFILL = "create table "
 			+ TABLE_REFILL + "(" + COLUMN_REFILL_ID
-			+ " integer primary key autoincrement, " + COLUMN_MEDICINE_ID
-			+ " integer REFERENCES " + TABLE_MEDICINE +", " + COLUMN_MINUTE
+			+ " integer primary key autoincrement, " +  COLUMN_MINUTE
 			+ " integer, " + COLUMN_HOUR 
 			+ " integer, " + COLUMN_DAY 
 			+ " integer, " + COLUMN_MONTH
