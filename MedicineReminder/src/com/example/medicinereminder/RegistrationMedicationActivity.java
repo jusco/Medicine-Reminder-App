@@ -197,7 +197,7 @@ public class RegistrationMedicationActivity extends FragmentActivity {
 			box.setText("Please enter at least one medicine.");
 			dialog.show();
 		}
-		else if(alarmtimes.size()!=medicineNames.size() || alarmtimes.get(0)==null){
+		else if(alarmtimes.get(0)==null){
 			Dialog dialog = new Dialog(this);
 			dialog.setTitle("Error");
 			TextView box = new TextView(this);
