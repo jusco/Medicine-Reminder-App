@@ -17,11 +17,22 @@ public class HomePageActivity extends Activity {
 		setContentView(R.layout.activity_home_page);
 		
 		MyGuy guy = MyGuy.getUser();
+		AlarmTracker tracker = AlarmTracker.getTracker();
 		
 		TextView fullNameText = (TextView)findViewById(R.id.fullNameText);
+		
 
 		fullNameText.setText(guy.fullName);
 		
+		setAvatar();
+		TextView streakText = (TextView)findViewById(R.id.medStreak);
+		streakText.setText(Integer.toString(tracker.streak));
+
+
+	}
+	
+	public void setAvatar(){
+		MyGuy guy = MyGuy.getUser();
 		ImageView image = (ImageView)findViewById(R.id.avatarImage);
 		if(guy.avatar >0 && guy.avatar <9){
 			switch (guy.avatar){
@@ -51,8 +62,6 @@ public class HomePageActivity extends Activity {
 				break;
 			}
 		}
-
-
 	}
 
 	@Override
@@ -77,6 +86,9 @@ public class HomePageActivity extends Activity {
 		TextView fullNameText = (TextView)findViewById(R.id.fullNameText);
 
 		fullNameText.setText(MyGuy.getUser().fullName);
+		TextView streakText = (TextView)findViewById(R.id.medStreak);
+		streakText.setText(Integer.toString(AlarmTracker.getTracker().streak));
+		setAvatar();
 		super.onResume();
 	}
 	

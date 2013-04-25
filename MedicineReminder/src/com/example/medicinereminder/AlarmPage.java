@@ -83,6 +83,7 @@ public class AlarmPage extends Activity {
 	public void onIgnoreButtonClick(View view){
 		AlarmTracker.getTracker().missedAlarms++;
 		AlarmTracker.getTracker().minutesSlept=0;
+		AlarmTracker.getTracker().setStreak(0);
 		alarmSet.setAlarm();
 		Time now = new Time();
 		now.setToNow();
@@ -118,6 +119,7 @@ public class AlarmPage extends Activity {
 	public void onTakeButtonClick(View view){
 		AlarmTracker.getTracker().minutesSlept=0;
 		AlarmTracker.getTracker().missedAlarms = 0;
+		AlarmTracker.getTracker().streak++;
 		Time now = new Time();
 		now.setToNow();
 		AlarmTracker.getTracker().addRecord(now, "Yes");
@@ -127,6 +129,8 @@ public class AlarmPage extends Activity {
 
 	public void onPillCamButtonClick(View view){
 		AlarmTracker.getTracker().minutesSlept=0;
+		AlarmTracker.getTracker().missedAlarms = 0;
+		AlarmTracker.getTracker().streak++;
 		Time now = new Time();
 		now.setToNow();
 		AlarmTracker.getTracker().addRecord(now, "Cam");
