@@ -65,7 +65,8 @@ public class RegistrationAppointmentsActivity extends Activity {
 	public void addAppointmentBox(View v){
 		LinearLayout appointments = (LinearLayout) findViewById(R.id.appointmentBoxes);
 		DatePicker appbox = new DatePicker(this);
-		appbox.setCalendarViewShown(false);
+		if(android.os.Build.VERSION.SDK_INT > android.os.Build.VERSION_CODES.HONEYCOMB)
+			appbox.setCalendarViewShown(false);
 		currentTag++;
 		appbox.setTag(Integer.toString(currentTag));
 		appointments.addView(appbox);

@@ -20,6 +20,7 @@ public class AlarmTracker {
     int missedAlarms;
     HashMap<Time,String> pillRecord;
     int minutesSlept;
+    int streak;
     
     private AlarmTracker() {
     	pillRecord = new HashMap<Time,String>();
@@ -59,6 +60,10 @@ public class AlarmTracker {
     
     public void setMissed(int missed){
     	this.missedAlarms = missed;
+    }
+    
+    public void setStreak(int streak){
+    	this.streak = streak;
     }
     
     public void addRecord(Time date, String taken){
