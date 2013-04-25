@@ -55,7 +55,7 @@
     <Button
         android:id="@+id/takeMedicine"
         android:onClick="toTakeMedicine"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
@@ -70,7 +70,7 @@
     <Button
         android:id="@+id/editButton"
         android:onClick="toEditSettings"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/takeMedicine"
         android:layout_alignParentEnd="true"
@@ -84,7 +84,7 @@
 
     <Button
         android:id="@+id/playButton"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/editButton"
         android:layout_alignLeft="@+id/editButton"
