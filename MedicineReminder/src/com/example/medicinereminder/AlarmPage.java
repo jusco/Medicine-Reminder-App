@@ -30,6 +30,7 @@ public class AlarmPage extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		alarmSet = new AlarmSet(this);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.alarm_page);
 
@@ -69,7 +70,6 @@ public class AlarmPage extends Activity {
 		//EditText times = (EditText)findViewById(R.id.editSleep);
 		AlarmTracker.getTracker().minutesSlept+=Integer.parseInt(time);
 		if(AlarmTracker.getTracker().minutesSlept<=65){
-			alarmSet = new AlarmSet(this);
 			alarmSet.setSleep(time);
 			finish();
 		}
@@ -83,6 +83,7 @@ public class AlarmPage extends Activity {
 	public void onIgnoreButtonClick(View view){
 		AlarmTracker.getTracker().missedAlarms++;
 		AlarmTracker.getTracker().minutesSlept=0;
+		alarmSet.setAlarm();
 		Time now = new Time();
 		now.setToNow();
 		AlarmTracker.getTracker().addRecord(now, "No");
@@ -120,6 +121,7 @@ public class AlarmPage extends Activity {
 		Time now = new Time();
 		now.setToNow();
 		AlarmTracker.getTracker().addRecord(now, "Yes");
+		alarmSet.setAlarm();
 		finish();
 	}
 
@@ -130,6 +132,7 @@ public class AlarmPage extends Activity {
 		AlarmTracker.getTracker().addRecord(now, "Cam");
 		Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
 		startActivityForResult(intent, 0);
+		alarmSet.setAlarm();
 		finish();
 	}
 	@Override
