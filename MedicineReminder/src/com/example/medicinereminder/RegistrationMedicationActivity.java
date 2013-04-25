@@ -236,7 +236,7 @@ public class RegistrationMedicationActivity extends FragmentActivity {
 	public void addMedicineBox(View v){
 		LinearLayout medicines = (LinearLayout) findViewById(R.id.medicineBoxes);
 		EditText medicinebox = new EditText(this);
-		medicinebox.setText("Medicine Name");
+		medicinebox.setHint("Medicine Name");
 		medicineTag++;
 		medicinebox.setTag(Integer.toString(medicineTag));
 
@@ -246,7 +246,8 @@ public class RegistrationMedicationActivity extends FragmentActivity {
 	public void addTimeBox(View v){
 		LinearLayout times = (LinearLayout) findViewById(R.id.timeBoxes);
 		EditText timebox = new EditText(this);
-		timebox.setText("Time");
+		timebox.setHint("Time");
+		timebox.setFocusableInTouchMode(false);
 		timebox.setId(R.id.EditTime);
 		timebox.setInputType(InputType.TYPE_DATETIME_VARIATION_TIME);
 		timebox.setFocusableInTouchMode(false);

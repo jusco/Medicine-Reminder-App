@@ -49,7 +49,7 @@
                 android:focusableInTouchMode="false"
                 android:inputType="date"
                 android:onClick="showDatePickerDialog"
-                android:text="@string/pick_date" >
+                android:hint="@string/pick_date" >
             </EditText>
 
             <EditText

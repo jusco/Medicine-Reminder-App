@@ -20,7 +20,7 @@
     <string name="next">Next</string>
     <string name="medicinetitle">What medicine do you take?</string>
     <string name="medicinename">Medicine Name</string>
-    <string name="addmedicine">     +     </string>
+    <string name="addmedicine">Add</string>
     <string name="medicinetimetitle">What time do you take your meds?</string>
     <string name="medicinetime">Time</string>
     <string name="prev">Previous</string>

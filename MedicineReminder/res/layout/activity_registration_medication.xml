@@ -57,8 +57,8 @@
 
                 <Button
                     android:id="@+id/AddButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:onClick="addMedicineBox"
                     android:text="@string/addmedicine" />
@@ -92,7 +92,7 @@
                     android:inputType="time"
                     android:onClick="showTimePickerDialog"
                     android:tag="1"
-                    android:text="@string/medicinetime" >
+                    android:hint="@string/medicinetime" >
                 </EditText>
             </LinearLayout>
 
@@ -103,8 +103,8 @@
 
                 <Button
                     android:id="@+id/AddButton2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:onClick="addTimeBox"
                     android:text="@string/addmedicine" />
