@@ -81,5 +81,7 @@
     <string name="title_activity_registration_reminders_gb">Reminder</string>
     <string name="title_activity_registration_startup">MedCheck</string>
     <string name="title_activity_streak">VirusBusters</string>
+    <string name="appointment">Appointment Date:</string>
+    <string name="refill">Refill Date:</string>
 
 </resources>
