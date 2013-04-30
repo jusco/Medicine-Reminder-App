@@ -92,6 +92,13 @@ public class HomePageActivity extends Activity {
 		super.onResume();
 	}
 	
+//	public void onDestroy(){
+//		//Send when the app exits
+//		MyGuy.getUser().sendToDatabase(this);
+//		AlarmTracker.getTracker().sendToDatabase(this);
+//		super.onDestroy();
+//	}
+	
 	public void onClickPlay(View v){
 		Intent intent = new Intent(this, StreakActivity.class);
 		startActivity(intent);

@@ -31,8 +31,8 @@ public class DatabaseEntry extends ActivityInstrumentationTestCase2<Registration
 	
 	
 	public void testAddGetUser(){
-		CursorHolder result = dbAccess.addUserData("Smith", "Will", 33, 2323, 22, 4, 2013, "Dr House", "9084343434");
-		CursorHolder get_result = dbAccess.getUserData(result.getString(1));
+		CursorHolder result = dbAccess.addUserData("Smith", "Will", 33, 2323, "4/2/2323", "Dr House", "9084343434", 1,0);
+		CursorHolder get_result = dbAccess.getUserData(result.getInt(3));
 		assertEquals(result.getInt(0), get_result.getInt(0));
 		assertEquals(result.getString(1), get_result.getString(1));
 		assertEquals(result.getString(2), get_result.getString(2));
@@ -46,7 +46,7 @@ public class DatabaseEntry extends ActivityInstrumentationTestCase2<Registration
 	}
 	
 	public void testAddUserRobust(){
-		assertNull(dbAccess.addUserData(null, null, -123, 233,3322, 444, 13, null, null));
+		assertNull(dbAccess.addUserData(null, null, -123, 233,null, null, null,-1,-1));
 	}
 	
 	public void testAddGetMedicine(){
@@ -123,7 +123,7 @@ public class DatabaseEntry extends ActivityInstrumentationTestCase2<Registration
 	
 	public void testPrintMethod(){
 		CursorHolder result =null;
-		dbAccess.addUserData("Smith", "Will", 33, 2323, 22, 4, 2013, "Dr House", "9084343434");
+		dbAccess.addUserData("Smith", "Will", 33, 2323, "4/22/2013", "Dr House", "9084343434", 1,-1);
 		result = dbAccess.addMedicine("Varivax");
 		dbAccess.addSchedule( 33, 2, 23, 2, 2013);
 		dbAccess.addAppt(34, 3, 23, 2, 2013);

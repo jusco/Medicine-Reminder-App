@@ -5,6 +5,10 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 
+import com.example.medicinereminder.sql.CursorHolder;
+import com.example.medicinereminder.sql.DatabaseAccess;
+
+import android.content.Context;
 import android.text.format.Time;
 
 public class AlarmTracker {
@@ -77,6 +81,30 @@ public class AlarmTracker {
     
     public HashMap<Time,String> getRecord(){
     	return pillRecord;
+    }
+    
+    public void sendToDatabase(Context context){
+    	DatabaseAccess dbAccess = new DatabaseAccess(context);
+    	dbAccess.open();
+    	dbAccess.resetAppData();
+    	dbAccess.addAppData(alarmMessage, alarmCount, reminder, missedAlarms, streak, highscore);
+    	dbAccess.close();
+    }
+    
+    public void loadFromDatabase(Context context){
+    	DatabaseAccess dbAccess = new DatabaseAccess(context);
+    	dbAccess.open();
+    	CursorHolder result =dbAccess.getAppData(0);
+    	if (result!=null){
+    		alarmMessage = result.getString(1);
+    		System.out.println(alarmMessage);
+    		alarmCount = result.getInt(2);
+    		reminder = result.getInt(3);
+    		missedAlarms = result.getInt(4);
+    		streak = result.getInt(5);
+    		highscore = result.getInt(6);
+    	}
+    	dbAccess.close();
     }
     
 }

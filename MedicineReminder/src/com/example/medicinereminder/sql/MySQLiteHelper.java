@@ -31,6 +31,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 	public static final String COLUMN_DIAG_YEAR = "diag_year";
 	public static final String COLUMN_DOCTOR = "doctor";
 	public static final String COLUMN_DOCTOR_NO = "doctor_no";
+	public static final String COLUMN_FIRST = "first";
 	
 	public static final String TABLE_MEDICINE = "medicine";
 	public static final String COLUMN_MEDICINE_ID = "medicine_id";
@@ -61,23 +62,58 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 	//Medicine as foreign key
 	//Use the time parameters above
 	
+	public static final String TABLE_APPDATA = "appdata";
+	public static final String COLUMN_AVATAR = "avatar";
+	public static final String COLUMN_ALARM_MESS = "alarm_mess";
+	public static final String COLUMN_ALARM_COUNT = "alarm_count";
+	public static final String COLUMN_REMINDER = "reminder";
+	public static final String COLUMN_MISSED = "missed";
+	public static final String COLUMN_STREAK = "streak";
+	public static final String COLUMN_HIGHSCORE = "highscore";
+	
+	public static final String TABLE_PILLCAM = "pillcam";
+	//Use the time parameters above
+	public static final String COLUMN_TAKEN = "taken";
+	
 	
 	private static final String DATABASE_NAME= "user.db";
 	private static final int DATABASE_VERSION = 2;
 	
+	
+	private static final String DATABASE_CREATE_PILLCAM = "create table "
+			+ TABLE_PILLCAM + "(" + COLUMN_ID
+			+ " integer primary key autoincrement, " + COLUMN_TAKEN
+			+ " text not null, " + COLUMN_MINUTE
+			+ " integer, " + COLUMN_HOUR 
+			+ " integer, " + COLUMN_DAY 
+			+ " integer, " + COLUMN_MONTH
+			+ " integer, " + COLUMN_YEAR
+			+ " integer);";
+			
+	
+	static final String DATABASE_CREATE_APPDATA = "create table "
+			+ TABLE_APPDATA + "(" + COLUMN_ID
+			+ " integer primary key autoincrement, " + COLUMN_ALARM_MESS
+			+ " text not null, " + COLUMN_ALARM_COUNT
+			+ " integer, " + COLUMN_REMINDER
+			+ " integer, " + COLUMN_MISSED
+			+ " integer, " + COLUMN_STREAK
+			+ " integer, " + COLUMN_HIGHSCORE
+			+ " integer);";
+	
 	//Database creation
-	private static final String DATABASE_CREATE_USER = "create table "
+	static final String DATABASE_CREATE_USER = "create table "
 			+ TABLE_USERINFO + "(" + COLUMN_ID
 			+ " integer primary key autoincrement, " + COLUMN_NAME
 			+ " text not null, " + COLUMN_LAST_NAME 
 			+ " text not null, " + COLUMN_AGE 
 			+ " integer, " + COLUMN_VIRAL
 			+ " integer, " + COLUMN_DIAG_DAY
-			+ " integer, " + COLUMN_DIAG_MONTH
-			+ " integer, " + COLUMN_DIAG_YEAR
-			+ " integer, " + COLUMN_DOCTOR
+			+ " text not null, " + COLUMN_DOCTOR
 			+ " text not null, " + COLUMN_DOCTOR_NO
-	        + " text not null);";
+	        + " text not null, " + COLUMN_AVATAR
+	        + " integer, " + COLUMN_FIRST
+	        +" integer);";
 	
 	private static final String DATABASE_CREATE_MEDICINE = "create table "
 			+ TABLE_MEDICINE + "(" + COLUMN_MEDICINE_ID
@@ -132,6 +168,8 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 		database.execSQL(DATABASE_CREATE_APPT);
 		database.execSQL(DATABASE_CREATE_LOG);
 		database.execSQL(DATABASE_CREATE_REFILL);
+		database.execSQL(DATABASE_CREATE_APPDATA);
+		database.execSQL(DATABASE_CREATE_PILLCAM);
 	}
 
 	
@@ -146,6 +184,8 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_APPT);
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_LOG);
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_REFILL);
+		db.execSQL("DROP TABLE IF EXISTS " + TABLE_APPDATA);
+		db.execSQL("DROP TABLE IF EXISTS " + TABLE_PILLCAM);
 		onCreate(db);
 	}
 	
