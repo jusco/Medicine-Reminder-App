@@ -88,6 +88,9 @@ public class RegistrationMedicationActivity extends FragmentActivity {
 			hourOfDay -= 12;
 			half = "pm";
 		}
+		if (hourOfDay==0){
+			hourOfDay = 12;
+		}
 		if(minute <10)
 			zero = "0";
 		output = Integer.toString(hourOfDay) + ":" + zero + Integer.toString(minute) 
