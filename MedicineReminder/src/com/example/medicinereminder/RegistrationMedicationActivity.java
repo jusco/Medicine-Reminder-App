@@ -3,7 +3,6 @@ package com.example.medicinereminder;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-import com.example.medicinereminder.MainActivity.TimePickerFragment;
 
 import android.os.Bundle;
 import android.app.Activity;

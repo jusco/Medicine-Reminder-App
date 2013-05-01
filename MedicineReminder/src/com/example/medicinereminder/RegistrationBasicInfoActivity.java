@@ -3,7 +3,6 @@ package com.example.medicinereminder;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-import com.example.medicinereminder.MainActivity.DatePickerFragment;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -25,7 +24,8 @@ import android.widget.TextView;
 import android.widget.ViewFlipper;
 
 public class RegistrationBasicInfoActivity extends FragmentActivity  {
-	protected static String date;
+	//Changed for testing
+	public static String date;
 	protected static EditText dateText;
 
 	@Override
@@ -127,7 +127,8 @@ public class RegistrationBasicInfoActivity extends FragmentActivity  {
 		}
 	}
 
-	private boolean validate(String firstName, String lastName, String viralLoad, 
+	//Changed to public for testing
+	public boolean validate(String firstName, String lastName, String viralLoad, 
 			String phone, String provider){
 		Dialog dialog = new Dialog(this);
 		dialog.setTitle("Error");
