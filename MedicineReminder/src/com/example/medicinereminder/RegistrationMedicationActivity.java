@@ -14,6 +14,7 @@ import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.text.InputType;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -26,7 +27,7 @@ import android.widget.ViewFlipper;
 
 public class RegistrationMedicationActivity extends FragmentActivity {
 	protected static String lastTime;
-	protected static ArrayList<int[]> alarmtimes;
+	public static ArrayList<int[]> alarmtimes;
 	protected static EditText lastTimeBox;
 	private int currentTag;//keeps track of the tags to assign to each box
 	private int medicineTag;
@@ -88,8 +89,12 @@ public class RegistrationMedicationActivity extends FragmentActivity {
 			hourOfDay -= 12;
 			half = "pm";
 		}
-		if (hourOfDay<1)
+		else if(hourOfDay==12){
+			half = "pm";
+		}
+		else if(hourOfDay==0){
 			hourOfDay = 12;
+		}
 		if(minute <10)
 			zero = "0";
 		output = Integer.toString(hourOfDay) + ":" + zero + Integer.toString(minute) 
@@ -136,6 +141,12 @@ public class RegistrationMedicationActivity extends FragmentActivity {
 				hourOfDay -= 12;
 				half = "pm";
 			}
+			else if(hourOfDay==12){
+				half = "pm";
+			}
+			else if(hourOfDay==0){
+				hourOfDay = 12;
+			}
 			if(minute <10)
 				zero = "0";
 			output = Integer.toString(hourOfDay) + ":" + zero + Integer.toString(minute) 
@@ -150,11 +161,11 @@ public class RegistrationMedicationActivity extends FragmentActivity {
 			if (alarmtimes.size() >= last) //Get rid of the old time;
 				alarmtimes.remove(last-1);
 			alarmtimes.add(arr);
-			lastTimeBox.setText(convertToString(hourOfDay,minute));
+			//lastTimeBox.setText(convertToString(hourOfDay,minute));
 		}
 	}
 
-	private void sortTimes(){
+	public void sortTimes(){
 		int [] min_time={100,100};
 		int min_index = 0;
 		int [] temp;
