@@ -47,8 +47,14 @@ public class AlarmPage extends Activity {
 		spinner.setAdapter(adapter);
 
 		spinner.setOnItemSelectedListener((OnItemSelectedListener) new SpinnerActivity());
-		MediaPlayer mp = MediaPlayer.create(getBaseContext(),R.raw.lickshot);
-		mp.start();
+		if(AlarmTracker.getTracker().soundAlarm){
+			MediaPlayer mp = MediaPlayer.create(getBaseContext(),R.raw.lickshot);
+			mp.start();
+			AlarmTracker.getTracker().setSoundAlarm(false);
+		}
+		
+			
+		
 	}
 
 
@@ -71,6 +77,7 @@ public class AlarmPage extends Activity {
 		AlarmTracker.getTracker().minutesSlept+=Integer.parseInt(time);
 		if(AlarmTracker.getTracker().minutesSlept<=65){
 			alarmSet.setSleep(time);
+			AlarmTracker.getTracker().setSoundAlarm(true);
 			finish();
 		}
 		else{
@@ -78,6 +85,7 @@ public class AlarmPage extends Activity {
 			Toast.makeText(this, "Alarm canceled! Sleeping for more than an hour counts as ignoring!", duration).show();
 			onIgnoreButtonClick(view);
 		}
+		
 	}
 
 	public void onIgnoreButtonClick(View view){
@@ -112,6 +120,7 @@ public class AlarmPage extends Activity {
 			builder.create().show();
 		}
 		else{
+			AlarmTracker.getTracker().setSoundAlarm(true);
 			finish();
 		}
 	}
@@ -124,6 +133,7 @@ public class AlarmPage extends Activity {
 		now.setToNow();
 		AlarmTracker.getTracker().addRecord(now, "Yes");
 		alarmSet.setAlarm();
+		AlarmTracker.getTracker().setSoundAlarm(true);
 		finish();
 	}
 
@@ -137,6 +147,7 @@ public class AlarmPage extends Activity {
 		Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
 		startActivityForResult(intent, 0);
 		alarmSet.setAlarm();
+
 		finish();
 	}
 	@Override

@@ -88,9 +88,8 @@ public class RegistrationMedicationActivity extends FragmentActivity {
 			hourOfDay -= 12;
 			half = "pm";
 		}
-		if (hourOfDay==0){
+		if (hourOfDay<1)
 			hourOfDay = 12;
-		}
 		if(minute <10)
 			zero = "0";
 		output = Integer.toString(hourOfDay) + ":" + zero + Integer.toString(minute) 
@@ -215,6 +214,7 @@ public class RegistrationMedicationActivity extends FragmentActivity {
 			AlarmTracker.getTracker().setAlarmCount(0);
 			AlarmTracker.getTracker().setMissed(0);
 			AlarmTracker.getTracker().setStreak(0);
+			AlarmTracker.getTracker().setSoundAlarm(true);
 			if (MyGuy.firstTime){
 				Intent intent;
 				if(android.os.Build.VERSION.SDK_INT > android.os.Build.VERSION_CODES.HONEYCOMB)

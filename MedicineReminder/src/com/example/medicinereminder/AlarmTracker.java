@@ -26,6 +26,7 @@ public class AlarmTracker {
     int minutesSlept;
     public int streak;
     public int highscore = 0;
+    public boolean soundAlarm;
     
     private AlarmTracker() {
     	pillRecord = new HashMap<Time,String>();
@@ -81,6 +82,10 @@ public class AlarmTracker {
     
     public HashMap<Time,String> getRecord(){
     	return pillRecord;
+    }
+    
+    public void setSoundAlarm(boolean soundAlarm){
+    	this.soundAlarm = soundAlarm;
     }
     
     public void sendToDatabase(Context context){

@@ -83,6 +83,8 @@ public class HomePageActivity extends Activity {
 	
 	public void toTakeMedicine(View v){
 		//TODO Make sure that going straight to take medicine is the same as activating alarm
+		AlarmTracker.getTracker().setSoundAlarm(false);
+
 		Intent intent = new Intent(this,AlarmPage.class);
 		startActivity(intent);
 	}
