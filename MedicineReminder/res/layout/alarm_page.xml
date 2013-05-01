@@ -64,6 +64,7 @@
             android:layout_alignParentLeft="true"
             android:layout_marginBottom="16dp"
             android:layout_marginLeft="22dp"
+            android:onClick="onTakeButtonClick"
             android:text="Take" />
 
 </RelativeLayout>
