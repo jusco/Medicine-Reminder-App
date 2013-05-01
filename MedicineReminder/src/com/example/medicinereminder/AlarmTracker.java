@@ -92,7 +92,6 @@ public class AlarmTracker {
     	DatabaseAccess dbAccess = new DatabaseAccess(context);
     	dbAccess.open();
     	dbAccess.resetAppData();
-    	System.out.println("Data Added");
     	dbAccess.addAppData(alarmMessage, alarmCount, reminder, missedAlarms, streak, highscore);
     	dbAccess.close();
     }
@@ -107,8 +106,6 @@ public class AlarmTracker {
     	System.out.println("tries app data");
     	if (result!=null){
     		alarmMessage = result.getString(1);
-    		System.out.println(alarmMessage);
-    		System.out.println("gets app data");
     		alarmCount = result.getInt(2);
     		reminder = result.getInt(3);
     		missedAlarms = result.getInt(4);

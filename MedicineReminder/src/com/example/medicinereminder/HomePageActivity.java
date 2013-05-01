@@ -51,28 +51,28 @@ public class HomePageActivity extends Activity {
 		if(guy.avatar >0 && guy.avatar <9){
 			switch (guy.avatar){
 			case 1:
-				image.setImageResource(R.drawable.man1_64x64);
+				image.setImageResource(R.drawable.man1_128x128);
 				break;
 			case 2:
-				image.setImageResource(R.drawable.woman1_64x64);
+				image.setImageResource(R.drawable.woman1_128x128);
 				break;
 			case 3:
-				image.setImageResource(R.drawable.man2_64x64);
+				image.setImageResource(R.drawable.man2_128x128);
 				break;
 			case 4:
-				image.setImageResource(R.drawable.woman2_64x64);
+				image.setImageResource(R.drawable.woman2_128x128);
 				break;
 			case 5:
-				image.setImageResource(R.drawable.man3_64x64);
+				image.setImageResource(R.drawable.man3_128x128);
 				break;
 			case 6:
-				image.setImageResource(R.drawable.woman3_64x64);
+				image.setImageResource(R.drawable.woman3_128x128);
 				break;
 			case 7:
-				image.setImageResource(R.drawable.man4_64x64);
+				image.setImageResource(R.drawable.man4_128x128);
 				break;
 			case 8:
-				image.setImageResource(R.drawable.woman4_64x64);
+				image.setImageResource(R.drawable.woman4_128x128);
 				break;
 			}
 		}
