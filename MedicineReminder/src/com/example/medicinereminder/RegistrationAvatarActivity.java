@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.view.Menu;
 import android.view.View;
 
@@ -46,7 +47,18 @@ public class RegistrationAvatarActivity extends Activity {
 		finish();
 	}
 	
+	public void clearSelection(Drawable back){
+		for (int i=1;i<9;i++){
+			View images = findViewById(R.id.SeventhPage);
+			View image = images.findViewWithTag(Integer.toString(i));
+			image.setBackgroundDrawable(back);		
+		}
+		
+	}
+	
 	public void selectAvatar(View v){
+		Drawable old = v.getBackground();
+		clearSelection(old);
 		v.setBackgroundColor(Color.RED);
 		String tag =(String)v.getTag();
 		avatar = Integer.parseInt(tag);
