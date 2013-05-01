@@ -400,8 +400,8 @@ public class DatabaseAccess {
 	
 	public CursorHolder addPillCam(String taken,int minute,
 			int hour, int day, int month, int year){
-		if(minute <0 || minute > 59 || hour < 1 ||
-				hour > 12 || day < 1 || day > 31 || month < 1 ||
+		if(taken==null||minute <0 || minute > 59 || hour < 0 ||
+				hour > 23|| day < 1 || day > 31 || month < 1 ||
 				month > 12 || year < 1910 || year > 2013)
 			return null;
 		ContentValues values = new ContentValues();
@@ -436,8 +436,12 @@ public class DatabaseAccess {
 			return null;
 		Cursor cursor = database.query(MySQLiteHelper.TABLE_PILLCAM, allColumnsPillCam,
 				MySQLiteHelper.COLUMN_ID + " = " + pillcam_id, null, null, null, null);
-		cursor.moveToFirst();
-		CursorHolder newData = cursorToPillCam(cursor);
+		boolean exists = cursor.moveToFirst();
+		CursorHolder newData;
+		if(exists)
+			newData = cursorToPillCam(cursor);
+		else
+			newData = null;
 		cursor.close();
 		return newData;
 	}
@@ -460,6 +464,9 @@ public class DatabaseAccess {
 	public CursorHolder addAppData(String alarm_mess,int alarm_count,
 			int reminder, int missed, int streak,
 			int highscore){
+		if(alarm_mess ==null || alarm_count <0 || reminder < 0 || missed < 0 ||
+				streak < 0 || highscore < 0 )
+			return null;
 		
 		ContentValues values = new ContentValues();
 		values.put(MySQLiteHelper.COLUMN_ALARM_MESS, alarm_mess);
@@ -476,8 +483,9 @@ public class DatabaseAccess {
 				null,null,null,null);
 		boolean exists = cursor.moveToFirst();
 		CursorHolder newData = null;
-		if (exists)
+		if (exists){
 			newData = cursorToAppData(cursor);
+		}
 		cursor.close();
 		return newData;
 	}

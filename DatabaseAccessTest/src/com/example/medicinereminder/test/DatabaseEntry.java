@@ -29,6 +29,12 @@ public class DatabaseEntry extends ActivityInstrumentationTestCase2<Registration
 		
 	}
 	
+	@Override
+	protected void tearDown() throws Exception{
+		dbAccess.close();
+		super.tearDown();
+	}
+	
 	
 	public void testAddGetUser(){
 		CursorHolder result = dbAccess.addUserData("Smith", "Will", 33, 2323, "4/2/2323", "Dr House", "9084343434", 1,0);
@@ -121,6 +127,38 @@ public class DatabaseEntry extends ActivityInstrumentationTestCase2<Registration
 		assertNull(dbAccess.addLog(null, "1232132"));
 	}
 	
+	public void testAddGetAppData(){
+		CursorHolder result = dbAccess.addAppData("Take meds", 2, 0, 2, 3, 400);
+		CursorHolder get_result = dbAccess.getAppData(result.getInt(0));
+		assertEquals(result.getInt(0), get_result.getInt(0));
+		assertEquals(result.getString(1), get_result.getString(1));
+		assertEquals(result.getInt(2), get_result.getInt(2));
+		assertEquals(result.getInt(3), get_result.getInt(3));
+		assertEquals(result.getInt(4), get_result.getInt(4));
+		assertEquals(result.getInt(5), get_result.getInt(5));
+		assertEquals(result.getInt(6), get_result.getInt(6));
+	}
+	
+	public void testAddAppDataRobust(){
+		assertNull(dbAccess.addAppData(null, 1 , 2, 3 ,4 ,5));
+	}
+	
+	public void testAddGetPillCam(){
+		CursorHolder result = dbAccess.addPillCam("Yes", 2, 22, 2, 2, 2003);
+		CursorHolder get_result = dbAccess.getPillCam(result.getInt(0));
+		assertEquals(result.getInt(0), get_result.getInt(0));
+		assertEquals(result.getString(1), get_result.getString(1));
+		assertEquals(result.getInt(2), get_result.getInt(2));
+		assertEquals(result.getInt(3), get_result.getInt(3));
+		assertEquals(result.getInt(4), get_result.getInt(4));
+		assertEquals(result.getInt(5), get_result.getInt(5));
+		assertEquals(result.getInt(6), get_result.getInt(6));
+	}
+	
+	public void testAppPillCamRobust(){
+		assertNull(dbAccess.addPillCam(null, 1, 1, 1, 1, 1));
+	}
+	
 	public void testPrintMethod(){
 		CursorHolder result =null;
 		dbAccess.addUserData("Smith", "Will", 33, 2323, "4/22/2013", "Dr House", "9084343434", 1,-1);
@@ -129,6 +167,8 @@ public class DatabaseEntry extends ActivityInstrumentationTestCase2<Registration
 		dbAccess.addAppt(34, 3, 23, 2, 2013);
 		dbAccess.addRefill( 33, 2, 23, 2, 2013);
 		dbAccess.addLog("Rantests", "1:00PM");
+		dbAccess.addPillCam("Yes", 2, 22, 2, 2, 2003);
+		dbAccess.addAppData("Take meds", 2, 0, 2, 3, 400);
 		dbAccess.printDatabase();
 		assertTrue(true);
 	}
