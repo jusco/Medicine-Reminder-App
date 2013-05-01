@@ -38,11 +38,11 @@ public class DatabaseEntry extends ActivityInstrumentationTestCase2<Registration
 		assertEquals(result.getString(2), get_result.getString(2));
 		assertEquals(result.getInt(3), get_result.getInt(3));
 		assertEquals(result.getInt(4), get_result.getInt(4));
-		assertEquals(result.getInt(5), get_result.getInt(5));
-		assertEquals(result.getInt(6), get_result.getInt(6));
-		assertEquals(result.getInt(7), get_result.getInt(7));
-		assertEquals(result.getString(8), get_result.getString(8));
-		assertEquals(result.getString(9), get_result.getString(9));
+		assertEquals(result.getString(5), get_result.getString(5));
+		assertEquals(result.getString(6), get_result.getString(6));
+		assertEquals(result.getString(7), get_result.getString(7));
+		assertEquals(result.getInt(8), get_result.getInt(8));
+		assertEquals(result.getInt(9), get_result.getInt(9));
 	}
 	
 	public void testAddUserRobust(){

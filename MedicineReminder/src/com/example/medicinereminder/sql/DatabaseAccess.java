@@ -529,7 +529,7 @@ public class DatabaseAccess {
 			System.out.println("Id: " + item.getInt(0) + " Name: " +
 					item.getString(1) + " Last: " + item.getString(2) +
 					" Age: " + item.getInt(3) + " Viral Load: " + 
-					item.getString(4) + 
+					item.getInt(4) + 
 					" Diag Day " + item.getString(5) + 
 					" Provider: " + item.getString(6) + " Provider No.: " +
 					item.getString(7) + " Avatar " + item.getInt(8) + " First " +
