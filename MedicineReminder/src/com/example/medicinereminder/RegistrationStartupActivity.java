@@ -12,8 +12,8 @@ public class RegistrationStartupActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_registration_startup);
-		//MyGuy.getUser().loadFromDatabase(this);
-		//AlarmTracker.getTracker().loadFromDatabase(this);
+		MyGuy.getUser().loadFromDatabase(this);
+		AlarmTracker.getTracker().loadFromDatabase(this);
 	}
 
 	@Override

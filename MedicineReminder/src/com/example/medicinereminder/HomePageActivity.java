@@ -28,16 +28,20 @@ public class HomePageActivity extends Activity {
 		TextView streakText = (TextView)findViewById(R.id.medStreak);
 		streakText.setText(Integer.toString(tracker.streak));
 		
-		TextView appointmentText = (TextView)findViewById(R.id.appointmentDate);
-		int month = AlarmTracker.getTracker().appointments.get(0).getTime().getMonth();
-		int day = AlarmTracker.getTracker().appointments.get(0).getTime().getDate();			
-		appointmentText.setText(month + "/" + day);
 		
-		TextView refillText = (TextView)findViewById(R.id.refillDate);
-		month = AlarmTracker.getTracker().refills.get(0).getTime().getMonth();
-		day = AlarmTracker.getTracker().refills.get(0).getTime().getDate();			
-		refillText.setText(month + "/" + day);
-
+		if (tracker.appointments!=null){
+			TextView appointmentText = (TextView)findViewById(R.id.appointmentDate);
+			int month = tracker.appointments.get(0).getTime().getMonth();
+			int day = tracker.appointments.get(0).getTime().getDate();			
+			appointmentText.setText(month + "/" + day);
+		}
+		
+		if (tracker.refills!=null){
+			TextView refillText = (TextView)findViewById(R.id.refillDate);
+			int month = tracker.refills.get(0).getTime().getMonth();
+			int day = tracker.refills.get(0).getTime().getDate();			
+			refillText.setText(month + "/" + day);
+		}
 
 	}
 	
@@ -104,12 +108,12 @@ public class HomePageActivity extends Activity {
 		super.onResume();
 	}
 	
-//	public void onDestroy(){
-//		//Send when the app exits
-//		MyGuy.getUser().sendToDatabase(this);
-//		AlarmTracker.getTracker().sendToDatabase(this);
-//		super.onDestroy();
-//	}
+	public void onStop(){
+		//Send when the app exits
+		MyGuy.getUser().sendToDatabase(this);
+		AlarmTracker.getTracker().sendToDatabase(this);
+		super.onStop();
+	}
 	
 	public void onClickPlay(View v){
 		Intent intent = new Intent(this, StreakActivity.class);

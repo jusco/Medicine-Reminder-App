@@ -160,7 +160,7 @@ public class RegistrationMedicationActivity extends FragmentActivity {
 			if (alarmtimes.size() >= last) //Get rid of the old time;
 				alarmtimes.remove(last-1);
 			alarmtimes.add(arr);
-			//lastTimeBox.setText(convertToString(hourOfDay,minute));
+			lastTimeBox.setText(convertToString(hourOfDay,minute));
 		}
 	}
 
